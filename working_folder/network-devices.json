@@ -1,0 +1,418 @@
+[
+  {
+    "ip": "192.168.0.1",
+    "mac": "8c:90:2d:2b:89:cb",
+    "vendor_hint": "(Unknown)",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": "Canon imageRUNNER C5185 printer or Mercusys AC12G WAP",
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "ssh",
+          "product": "OpenSSH",
+          "version": "6.6.0",
+          "extrainfo": "protocol 2.0"
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.1"
+  },
+  {
+    "ip": "192.168.0.100",
+    "mac": "d8:bb:c1:b1:04:11",
+    "vendor_hint": "Micro-Star INTL CO., LTD.",
+    "locally_admin": false,
+    "vendor_local": "Micro-St",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": "Microsoft Windows 11 21H2",
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "tcpwrapped",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "http",
+          "product": "National Instruments LabVIEW service locator httpd",
+          "version": "1.0.0",
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "nomachine-nx",
+          "product": "NoMachine NX Server remote desktop",
+          "version": "9.1.24",
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "Micro-St"
+  },
+  {
+    "ip": "192.168.0.103",
+    "mac": "c4:23:60:8d:9c:9e",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "IntelCor"
+  },
+  {
+    "ip": "192.168.0.104",
+    "mac": "e6:eb:7e:7c:26:03",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.104"
+  },
+  {
+    "ip": "192.168.0.102",
+    "mac": "46:f4:d7:04:8d:84",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "192.168.0.102"
+  }
+]
