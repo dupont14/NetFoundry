@@ -8,7 +8,20 @@ import json
 import subprocess
 import os
 import sys
+import shutil
 from pathlib import Path
+
+def check_tshark():
+    """Check if tshark is installed and available."""
+    tshark_path = shutil.which('tshark')
+    if not tshark_path:
+        print("[!] ERROR: tshark is not installed or not in PATH")
+        print("[!] Please install tshark (Wireshark) using one of the following:")
+        print("[!]   macOS: brew install wireshark")
+        print("[!]   Linux: sudo apt-get install tshark  (Debian/Ubuntu)")
+        print("[!]          sudo yum install wireshark   (RHEL/CentOS)")
+        sys.exit(1)
+    return tshark_path
 
 def run(cmd):
     """Run shell command and return stdout as string."""
@@ -110,64 +123,110 @@ def analyze_all_devices(interface, devices_file, duration, output_dir):
     output_dir = Path(output_dir)
     output_dir.mkdir(exist_ok=True)
     
+    if not devices or len(devices) == 0:
+        print("[!] No devices found in network-devices.json")
+        # Return empty summaries
+        combined_file = output_dir / "all_summaries.json"
+        with open(combined_file, 'w') as f:
+            json.dump({}, f, indent=2)
+        return {}
+    
+    # Get all device IPs
+    device_ips = [d.get('ip') for d in devices if d.get('ip')]
+    if not device_ips:
+        print("[!] No valid device IPs found")
+        return {}
+    
+    print(f"[+] Analyzing {len(device_ips)} devices: {', '.join(device_ips)}")
+    
+    # Create a single pcap file for all devices
+    all_devices_pcap = output_dir / "capture_all_devices.pcap"
+    
+    # Build filter for all devices: "host 192.168.0.1 or host 192.168.0.100 or ..."
+    host_filter = " or ".join([f"host {ip}" for ip in device_ips])
+    
     summaries = {}
     
-    for device in devices:
-        ip = device.get('ip')
-        if not ip:
-            continue
-            
-        print(f"\n{'='*60}")
-        print(f"Analyzing device: {device.get('display_name', ip)} ({ip})")
-        print(f"{'='*60}")
+    try:
+        # Capture traffic for all devices at once
+        print(f"[+] Capturing traffic for all devices for {duration}s...")
+        cmd = f"sudo tshark -i {interface} -f '{host_filter}' -a duration:{duration} -w {all_devices_pcap}"
+        subprocess.run(cmd, shell=True, check=True, timeout=duration+5)
         
-        # Create unique pcap file for this device
-        pcap_file = output_dir / f"capture_{ip.replace('.', '_')}.pcap"
+        # Analyze captured traffic for each device
+        for device in devices:
+            ip = device.get('ip')
+            if not ip:
+                continue
+                
+            print(f"[*] Analyzing device: {device.get('display_name', ip)} ({ip})")
+            
+            try:
+                # Extract packets for this specific device from the combined pcap
+                device_pcap = output_dir / f"capture_{ip.replace('.', '_')}.pcap"
+                extract_cmd = f"tshark -r {all_devices_pcap} -w {device_pcap} -Y 'ip.addr == {ip}'"
+                subprocess.run(extract_cmd, shell=True, capture_output=True, timeout=5)
+                
+                # Analyze this device's traffic
+                summary = analyze_pcap(str(device_pcap), ip)
+                summaries[ip] = summary
+                
+                # Save individual summary
+                summary_file = output_dir / f"summary_{ip.replace('.', '_')}.json"
+                with open(summary_file, 'w') as f:
+                    json.dump(summary, f, indent=2)
+                
+                print(f"[✓] {ip}: {summary['packets']} packets, {summary['upload_bps']:.2f}↑ {summary['download_bps']:.2f}↓ bps")
+                
+            except Exception as e:
+                print(f"[✗] Error analyzing {ip}: {e}")
+                summaries[ip] = {
+                    "ip": ip,
+                    "error": str(e),
+                    "packets": 0,
+                    "bytes": 0,
+                    "upload_bps": 0,
+                    "download_bps": 0
+                }
         
-        try:
-            # Capture traffic
-            capture_traffic(interface, ip, duration, str(pcap_file))
+        # Clean up combined pcap
+        if all_devices_pcap.exists():
+            all_devices_pcap.unlink()
             
-            # Analyze captured traffic
-            summary = analyze_pcap(str(pcap_file), ip)
-            summaries[ip] = summary
-            
-            # Save individual summary
-            summary_file = output_dir / f"summary_{ip.replace('.', '_')}.json"
-            with open(summary_file, 'w') as f:
-                json.dump(summary, f, indent=2)
-            
-            print(f"[✓] Summary saved to {summary_file}")
-            print(f"    Upload: {summary['upload_bps']:.2f} bps")
-            print(f"    Download: {summary['download_bps']:.2f} bps")
-            
-        except Exception as e:
-            print(f"[✗] Error analyzing {ip}: {e}")
-            summaries[ip] = {
-                "ip": ip,
-                "error": str(e),
-                "packets": 0,
-                "bytes": 0,
-                "upload_bps": 0,
-                "download_bps": 0
-            }
+    except Exception as e:
+        print(f"[✗] Error capturing traffic: {e}")
+        # Return empty summaries for all devices
+        for device in devices:
+            ip = device.get('ip')
+            if ip:
+                summaries[ip] = {
+                    "ip": ip,
+                    "error": str(e),
+                    "packets": 0,
+                    "bytes": 0,
+                    "upload_bps": 0,
+                    "download_bps": 0
+                }
     
     # Save combined summaries
     combined_file = output_dir / "all_summaries.json"
     with open(combined_file, 'w') as f:
         json.dump(summaries, f, indent=2)
     
-    print(f"\n[+] All summaries saved to {combined_file}")
+    print(f"[+] All summaries saved to {combined_file}")
     return summaries
 
 def main():
+    # Check for tshark first
+    tshark_path = check_tshark()
+    
     parser = argparse.ArgumentParser(
         description="Capture and analyze network traffic for all devices in network-devices.json"
     )
     parser.add_argument(
         "--interface", 
         required=True, 
-        help="Network interface to capture on (e.g., eth0, wlan0)"
+        help="Network interface to capture on (e.g., eth0, wlan0, en0)"
     )
     parser.add_argument(
         "--devices", 

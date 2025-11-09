@@ -294,7 +294,9 @@
             </a>
             <div class="traffic-status">
                 <div class="status-indicator" id="status-indicator"></div>
-                <span id="status-text">Starting capture...</span>
+                <span id="status-text">Not capturing - Click to start</span>
+                <span id="last-update-time" style="margin-left: 12px; font-size: 11px; color: #64748b;"></span>
+                <button id="start-capture-btn" style="margin-left: 16px; background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;">Start Capture</button>
             </div>
         </div>
 
@@ -465,59 +467,61 @@
                 
                 if (!device || device.error) {
                     document.getElementById('device-info-line').innerHTML = `
-                        <div class="device-name">Device Not Found</div>
+                        <div class="device-name">Device Not Found: ${deviceIp}</div>
                     `;
+                    console.error('Device not found:', device);
                     return;
                 }
                 
-                // Debug: log device data to see what we're getting
-                console.log('Device data loaded:', {
-                    ip: device.ip,
-                    packets: device.packets,
-                    bytes: device.bytes,
-                    upload_bps: device.upload_bps,
-                    download_bps: device.download_bps,
-                    traffic_stats: device.traffic_stats,
-                    hasConversations: !!device.conversations
-                });
+                console.log('Device data loaded:', device);
 
                 // Device info in a line
                 const infoLine = document.getElementById('device-info-line');
+                const displayName = device.display_name || device.hostname || device.ip || deviceIp;
+                const mac = device.mac || 'N/A';
+                const vendor = device.vendor_local || device.vendor_api || device.vendor_hint || 'Unknown';
+                const os = device.os_guess || 'Unknown';
+                
                 infoLine.innerHTML = `
-                    <div class="device-name">${device.display_name || deviceIp}</div>
+                    <div class="device-name">${displayName}</div>
                     <div class="info-item-inline">
                         <div class="info-label-inline">IP Address</div>
-                        <div class="info-value-inline">${device.ip}</div>
+                        <div class="info-value-inline">${device.ip || deviceIp}</div>
                     </div>
                     <div class="info-item-inline">
                         <div class="info-label-inline">MAC Address</div>
-                        <div class="info-value-inline">${device.mac || 'N/A'}</div>
+                        <div class="info-value-inline">${mac}</div>
                     </div>
                     <div class="info-item-inline">
                         <div class="info-label-inline">Vendor</div>
-                        <div class="info-value-inline">${device.vendor_local || device.vendor_hint || 'Unknown'}</div>
+                        <div class="info-value-inline">${vendor}</div>
                     </div>
                     <div class="info-item-inline">
                         <div class="info-label-inline">OS</div>
-                        <div class="info-value-inline">${device.os_guess || 'Unknown'}</div>
+                        <div class="info-value-inline">${os}</div>
                     </div>
                 `;
 
                 // Port section - minimalistic
-                if (device.ports && device.ports.length > 0) {
-                    const portsSection = document.getElementById('ports-section');
-                    const portsList = document.getElementById('ports-list');
+                const portsSection = document.getElementById('ports-section');
+                const portsList = document.getElementById('ports-list');
+                
+                if (device.ports && Array.isArray(device.ports) && device.ports.length > 0) {
                     portsSection.style.display = 'block';
                     
                     portsList.innerHTML = device.ports.map(port => {
+                        if (!port || !port.port) return '';
                         const service = port.service && port.service.name ? ` • ${port.service.name}` : '';
+                        const state = port.state || 'unknown';
                         return `
-                            <div class="port-badge ${port.state}">
-                                <span class="port-number">${port.port}/${port.proto}</span>
+                            <div class="port-badge ${state}">
+                                <span class="port-number">${port.port}/${port.proto || 'tcp'}</span>
                                 ${service ? `<span class="port-service">${service}</span>` : ''}
                             </div>
                         `;
-                    }).join('');
+                    }).filter(html => html).join('');
+                } else {
+                    portsSection.style.display = 'none';
                 }
 
                 // Parse conversations to get upload/download totals
@@ -532,50 +536,52 @@
                 
                 // Load historical traffic stats from summaries (use direct properties first, fallback to traffic_stats)
                 // Convert to numbers and handle 0 values properly (0 is falsy in JS, so we need explicit checks)
-                const packets = (device.packets !== undefined && device.packets !== null) ? Number(device.packets) : 0;
-                const bytes = (device.bytes !== undefined && device.bytes !== null) ? Number(device.bytes) : 0;
-                const uploadBps = (device.upload_bps !== undefined && device.upload_bps !== null) ? Number(device.upload_bps) : 0;
-                const downloadBps = (device.download_bps !== undefined && device.download_bps !== null) ? Number(device.download_bps) : 0;
+                const trafficStats = device.traffic_stats || {};
+                let packets = (device.packets !== undefined && device.packets !== null) ? Number(device.packets) : (trafficStats.packets || 0);
+                let bytes = (device.bytes !== undefined && device.bytes !== null) ? Number(device.bytes) : (trafficStats.bytes || 0);
+                let uploadBps = (device.upload_bps !== undefined && device.upload_bps !== null) ? Number(device.upload_bps) : (trafficStats.upload_bps || 0);
+                let downloadBps = (device.download_bps !== undefined && device.download_bps !== null) ? Number(device.download_bps) : (trafficStats.download_bps || 0);
                 
-                // Debug: log extracted values
-                console.log('Extracted values:', { 
-                    packets, 
-                    bytes, 
-                    uploadBps, 
-                    downloadBps,
-                    rawPackets: device.packets,
-                    rawBytes: device.bytes,
-                    rawUploadBps: device.upload_bps,
-                    rawDownloadBps: device.download_bps
-                });
+                // Ensure we have numbers
+                packets = Number(packets) || 0;
+                bytes = Number(bytes) || 0;
+                uploadBps = Number(uploadBps) || 0;
+                downloadBps = Number(downloadBps) || 0;
                 
-                // Display packets and bytes
+                // Display the stats immediately
                 document.getElementById('scan-packets').textContent = packets.toLocaleString();
                 document.getElementById('scan-bytes').textContent = formatBytes(bytes);
                 
-                // Display upload/download totals
-                document.getElementById('scan-upload-total').textContent = formatBytes(uploadBytesTotal || 0);
-                document.getElementById('scan-download-total').textContent = formatBytes(downloadBytesTotal || 0);
+                // Calculate upload/download totals from bytes if we have bps
+                // For display, we'll show the current rates
+                const uploadFormatted = formatBps(uploadBps);
+                const downloadFormatted = formatBps(downloadBps);
                 
-                // Update speed section with upload/download SPEEDS (bps)
-                console.log('Speed values before formatting:', { uploadBps, downloadBps });
-                const uploadSpeedFormatted = formatBps(uploadBps);
-                const downloadSpeedFormatted = formatBps(downloadBps);
-                console.log('Speed values after formatting:', { uploadSpeedFormatted, downloadSpeedFormatted });
-                const uploadSpeedParts = uploadSpeedFormatted.split(' ');
-                const downloadSpeedParts = downloadSpeedFormatted.split(' ');
+                // Update speed display
+                const uploadParts = uploadFormatted.split(' ');
+                const downloadParts = downloadFormatted.split(' ');
+                document.getElementById('speed-upload').textContent = uploadParts[0];
+                document.getElementById('speed-upload-unit').textContent = uploadParts[1] || 'bps';
+                document.getElementById('speed-download').textContent = downloadParts[0];
+                document.getElementById('speed-download-unit').textContent = downloadParts[1] || 'bps';
                 
-                document.getElementById('speed-upload').textContent = uploadSpeedParts[0];
-                document.getElementById('speed-upload-unit').textContent = uploadSpeedParts[1] || 'bps';
-                document.getElementById('speed-download').textContent = downloadSpeedParts[0];
-                document.getElementById('speed-download-unit').textContent = downloadSpeedParts[1] || 'bps';
-                
-                console.log('Setting speed elements:', {
-                    uploadElement: document.getElementById('speed-upload'),
-                    downloadElement: document.getElementById('speed-download'),
-                    uploadValue: uploadSpeedParts[0],
-                    downloadValue: downloadSpeedParts[0]
-                });
+                // Show upload/download totals (use conversation data if available, otherwise estimate from bytes and bps)
+                if (uploadBytesTotal > 0 || downloadBytesTotal > 0) {
+                    document.getElementById('scan-upload-total').textContent = formatBytes(uploadBytesTotal);
+                    document.getElementById('scan-download-total').textContent = formatBytes(downloadBytesTotal);
+                } else {
+                    // Estimate from bytes and bps ratio
+                    const totalBps = uploadBps + downloadBps;
+                    if (totalBps > 0) {
+                        const uploadTotal = bytes * (uploadBps / totalBps);
+                        const downloadTotal = bytes * (downloadBps / totalBps);
+                        document.getElementById('scan-upload-total').textContent = formatBytes(uploadTotal);
+                        document.getElementById('scan-download-total').textContent = formatBytes(downloadTotal);
+                    } else {
+                        document.getElementById('scan-upload-total').textContent = '0 B';
+                        document.getElementById('scan-download-total').textContent = '0 B';
+                    }
+                }
 
                 // Display protocol information
                 if (device.protocols && device.protocols.raw) {
@@ -703,12 +709,14 @@
                     isCapturing = true;
                     document.getElementById('status-indicator').classList.add('active');
                     document.getElementById('status-text').textContent = 'Capturing...';
+                    document.getElementById('start-capture-btn').style.display = 'none';
                     
-                    // Start polling for traffic updates
-                    trafficInterval = setInterval(updateTraffic, 2000);
-                    updateTraffic();
+                    // Start polling for traffic updates every 10 seconds
+                    trafficInterval = setInterval(updateTraffic, 10000);
+                    updateTraffic(); // Initial update
                 } else {
                     document.getElementById('status-text').textContent = 'Failed: ' + (result.error || 'Unknown error');
+                    document.getElementById('start-capture-btn').style.display = 'inline-block';
                 }
             } catch (error) {
                 console.error('Error starting traffic capture:', error);
@@ -718,6 +726,11 @@
 
         async function updateTraffic() {
             try {
+                // Update last update time
+                const now = new Date();
+                document.getElementById('last-update-time').textContent = 
+                    `Last update: ${now.toLocaleTimeString()}`;
+                
                 const response = await fetch('/api/traffic/data?ip=' + encodeURIComponent(deviceIp));
                 const data = await response.json();
                 
@@ -740,11 +753,21 @@
                     document.getElementById('speed-download-unit').textContent = downloadParts[1] || 'bps';
                 }
 
-                // Update scanning stats - only if we have valid live data
-                // Preserve historical data if live capture hasn't collected anything yet
-                if (data.packets > 0 || data.bytes > 0) {
-                    document.getElementById('scan-packets').textContent = (data.packets || 0).toLocaleString();
-                    document.getElementById('scan-bytes').textContent = formatBytes(data.bytes || 0);
+                // Update scanning stats - always update with latest data
+                const livePackets = data.packets || 0;
+                const liveBytes = data.bytes || 0;
+                document.getElementById('scan-packets').textContent = livePackets.toLocaleString();
+                document.getElementById('scan-bytes').textContent = formatBytes(liveBytes);
+                
+                // Update upload/download totals from live data if available
+                if (liveBytes > 0 && (data.upload_bps > 0 || data.download_bps > 0)) {
+                    const totalBps = (data.upload_bps || 0) + (data.download_bps || 0);
+                    if (totalBps > 0) {
+                        const uploadTotal = liveBytes * ((data.upload_bps || 0) / totalBps);
+                        const downloadTotal = liveBytes * ((data.download_bps || 0) / totalBps);
+                        document.getElementById('scan-upload-total').textContent = formatBytes(uploadTotal);
+                        document.getElementById('scan-download-total').textContent = formatBytes(downloadTotal);
+                    }
                 }
 
                 // Update traffic log (main scanning area)
@@ -776,12 +799,13 @@
                         logContainer.appendChild(liveHeader);
                     }
                     
-                    // Add new log entries (limit to last 100)
+                    // Add new log entries (limit to last 200 for 10 second updates)
                     const existingEntries = logContainer.querySelectorAll('.log-entry').length;
-                    if (existingEntries > 100) {
-                        // Remove oldest entry (but keep header)
+                    if (existingEntries > 200) {
+                        // Remove oldest entries (but keep header)
                         const entries = logContainer.querySelectorAll('.log-entry');
-                        if (entries.length > 1) {
+                        const toRemove = existingEntries - 200;
+                        for (let i = 1; i <= toRemove && entries.length > 1; i++) {
                             logContainer.removeChild(entries[1]); // Skip header
                         }
                     }
@@ -843,19 +867,30 @@
             
             isCapturing = false;
             document.getElementById('status-indicator').classList.remove('active');
-            document.getElementById('status-text').textContent = 'Stopped';
+            document.getElementById('status-text').textContent = 'Stopped - Click to start';
+            document.getElementById('start-capture-btn').style.display = 'inline-block';
         }
 
         // Cleanup on page unload
         window.addEventListener('beforeunload', stopTrafficCapture);
+        
+        // Stop capture when back button is clicked
+        document.querySelector('.back-btn').addEventListener('click', (e) => {
+            stopTrafficCapture();
+            // Allow navigation to proceed
+        });
+        
+        // Start capture button
+        document.getElementById('start-capture-btn').addEventListener('click', () => {
+            if (!isCapturing) {
+                startTrafficCapture();
+                document.getElementById('start-capture-btn').style.display = 'none';
+            }
+        });
 
-        // Initialize - load device info first, then start capture after a short delay
-        // This ensures historical data is displayed before live capture overwrites it
+        // Initialize - load device info first
+        // DO NOT auto-start capture - user must click button to start
         loadDeviceInfo();
-        // Delay traffic capture start to let historical data display first
-        setTimeout(() => {
-            startTrafficCapture();
-        }, 500);
     </script>
 </body>
 </html>

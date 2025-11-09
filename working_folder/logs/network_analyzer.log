@@ -95,3 +95,1459 @@ Analyzing device: 192.168.0.102 (192.168.0.102)
 [✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
 
 [+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+sudo: tshark: command not found
+sudo: tshark: command not found
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+sudo: tshark: command not found
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✗] Error analyzing 192.168.0.102: Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/capture_192_168_0_102.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+16 packets captured
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+4 packets captured
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 1423.05 bps
+    Download: 1678.72 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+1 packet captured
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 0.00 bps
+    Download: 422.94 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+Capturing on 'Wi-Fi: en0'
+34 packets captured
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+28 packets captured
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 0.00 bps
+    Download: 3984115.40 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 5089.10 bps
+    Download: 6571.28 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+Capturing on 'Wi-Fi: en0'
+5 packets captured
+Capturing on 'Wi-Fi: en0'
+3 packets captured
+Capturing on 'Wi-Fi: en0'
+109 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 0.00 bps
+    Download: 156.70 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 40899.02 bps
+    Download: 36138.13 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+32 packets captured
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+Capturing on 'Wi-Fi: en0'
+25 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 4651.81 bps
+    Download: 6291.05 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 10774.15 bps
+    Download: 4943.11 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+8 packets captured
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+Capturing on 'Wi-Fi: en0'
+7 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 0.00 bps
+    Download: 378.72 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 856.40 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+18 packets captured
+Capturing on 'Wi-Fi: en0'
+2 packets captured
+Capturing on 'Wi-Fi: en0'
+12 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 0.00 bps
+    Download: 1793.50 bps
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_100.json
+    Upload: 611.02 bps
+    Download: 0.00 bps
+
+============================================================
+Analyzing device: 192.168.0.102 (192.168.0.102)
+============================================================
+[+] Capturing traffic for 192.168.0.102 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_102.json
+    Upload: 860.32 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+
+============================================================
+Analyzing device: 10.179.252.12 (10.179.252.12)
+============================================================
+[+] Capturing traffic for 10.179.252.12 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_10_179_252_12.json
+    Upload: 0.00 bps
+    Download: 0.00 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+38 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✓] Summary saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/summary_192_168_0_1.json
+    Upload: 677.85 bps
+    Download: 1689.69 bps
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+29 packets captured
+[+] Analyzing 1 devices: 192.168.0.1
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 23 packets, 113.58↑ 1278.78↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+25 packets captured
+[+] Analyzing 1 devices: 192.168.0.1
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 20 packets, 836.50↑ 7744.85↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+51 packets captured
+[+] Analyzing 1 devices: 192.168.0.1
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 44 packets, 0.00↑ 2978.85↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+3 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 3 packets, 150.10↑ 462.31↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+19 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 0.00↑ 1041.31↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+35 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 33 packets, 0.00↑ 2297.45↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+Capturing on 'Wi-Fi: en0'
+8 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 91422.50↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+959 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 28 packets, 86.64↑ 1948.42↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+49 packets captured
+[+] Analyzing 2 devices: 192.168.0.1, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 49 packets, 4655.36↑ 7375.47↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+26 packets captured
+Capturing on 'Wi-Fi: en0'
+3 packets captured
+[+] Analyzing 3 devices: 192.168.0.1, 192.168.0.0, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 99491.37↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+47 packets captured
+[+] Analyzing 3 devices: 192.168.0.1, 192.168.0.0, 192.168.0.101
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 42 packets, 0.00↑ 7260.74↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+Capturing on 'Wi-Fi: en0'
+48 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 32 packets, 2155.45↑ 6933.01↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+244 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 17 packets, 0.00↑ 1278.21↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 223 packets, 8636.99↑ 22796.23↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+42 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 41 packets, 0.00↑ 2797.80↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+15 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 10 packets, 0.00↑ 668.25↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 696000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+66 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 9861417.04↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 59 packets, 8180.23↑ 16281.66↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+546 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 440 packets, 10316.29↑ 21652.47↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 33 packets, 1307.90↑ 3122.08↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 68 packets, 11496.81↑ 21009.01↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+36 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 34 packets, 0.00↑ 2287.36↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+18 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 16 packets, 0.00↑ 1106.39↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+18 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 14 packets, 0.00↑ 1244.21↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+74 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 8 packets, 0.00↑ 663.35↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 696000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 59 packets, 7984.01↑ 15891.10↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+16 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 13 packets, 0.00↑ 1011.65↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+20 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 0.00↑ 1204.51↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+10 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 8 packets, 0.00↑ 675.50↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+22 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 0.00↑ 1372.66↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+11 packets captured
+Capturing on 'Wi-Fi: en0'
+920 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.1, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 446 packets, 11077.98↑ 23153.09↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 34 packets, 18439.91↑ 24377.53↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 446 packets, 11077.98↑ 23153.09↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+248 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.1, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 42 packets, 0.00↑ 6258.66↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 134 packets, 18994.73↑ 41069.35↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 61 packets, 1945.00↑ 2712.52↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 42 packets, 0.00↑ 6258.66↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+21 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.105, 192.168.0.1, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 0.00↑ 1310.57↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 0.00↑ 1310.57↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+4 packets captured
+Capturing on 'Wi-Fi: en0'
+34 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 32 packets, 724.48↑ 1551.44↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 32 packets, 724.48↑ 1551.44↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+128 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 8163321.53↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 122 packets, 1939.91↑ 6481.56↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 8163321.53↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+34 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 31 packets, 0.00↑ 1993.17↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 31 packets, 0.00↑ 1993.17↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+67 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 65 packets, 417.77↑ 3625.52↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 65 packets, 417.77↑ 3625.52↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+35 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 0.00↑ 1083.09↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 0.00↑ 1083.09↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 10 packets, 2466.38↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+28 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 17 packets, 0.00↑ 1908.80↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 17 packets, 0.00↑ 1908.80↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 9 packets, 6290.95↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+17 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 13 packets, 0.00↑ 865.44↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 13 packets, 0.00↑ 865.44↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+219 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 19 packets, 0.00↑ 1560.83↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 199 packets, 7530.44↑ 21610.13↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 19 packets, 0.00↑ 1560.83↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+7 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.100, 192.168.0.101, 192.168.0.1, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 6 packets, 0.00↑ 370.96↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 688000000.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 6 packets, 0.00↑ 370.96↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+4 packets captured
+Capturing on 'Wi-Fi: en0'
+10 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.101, 192.168.0.100, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 5833.20↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+142 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.101, 192.168.0.100, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 32 packets, 0.00↑ 6765.55↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 107 packets, 1880.04↑ 6850.27↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 1 packets, 1464000000.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+29 packets captured
+Capturing on 'Wi-Fi: en0'
+22 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.101, 192.168.0.100, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 20 packets, 0.00↑ 1468.58↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+22 packets captured

@@ -218,13 +218,6 @@
                     <div class="subtitle"><span id="device-count">0</span> devices • Last updated: <span id="last-update">--:--:--</span></div>
                 </div>
             </div>
-            <button class="refresh-btn" id="refresh-btn">
-                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="23 4 23 10 17 10"></polyline>
-                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                </svg>
-                Refresh
-            </button>
         </div>
 
         <div class="map-container">
@@ -260,6 +253,11 @@
                     <span>Connection</span>
                 </div>
             </div>
+        </div>
+
+        <div class="devices-list-container" id="devices-list-container" style="display: none; margin-top: 24px; padding: 24px; background: #0f172a; border-radius: 12px; border: 1px solid #1e293b;">
+            <h3 style="margin: 0 0 16px 0; color: #e2e8f0; font-size: 18px; font-weight: 600;">Devices & Traffic</h3>
+            <div id="devices-list" style="display: grid; gap: 12px;"></div>
         </div>
 
         <div class="empty-state" id="empty-state" style="display: none;">
@@ -395,9 +393,7 @@
         let deviceTree = null;
 
         async function loadDevices() {
-            const btn = document.getElementById('refresh-btn');
-            btn.disabled = true;
-            btn.classList.add('loading');
+            // No button disabling for auto-load
 
             try {
                 // Fetch devices with traffic data merged from all_summaries.json
@@ -446,13 +442,177 @@
                 
                 renderMap();
                 updateStats();
+                renderDevicesList(); // This will update the status indicators
             } catch (error) {
                 console.error('Error loading devices:', error);
                 document.getElementById('empty-state').style.display = 'block';
-            } finally {
-                btn.disabled = false;
-                btn.classList.remove('loading');
             }
+        }
+
+        function renderDevicesList() {
+            const container = document.getElementById('devices-list-container');
+            const list = document.getElementById('devices-list');
+            
+            if (!deviceTree) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            // Flatten device tree to get all devices
+            function flattenDevices(node, result = []) {
+                if (!node) return result;
+                result.push(node);
+                if (node.children && Array.isArray(node.children)) {
+                    node.children.forEach(child => flattenDevices(child, result));
+                }
+                return result;
+            }
+            
+            const allDevices = flattenDevices(deviceTree);
+            
+            if (allDevices.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            container.style.display = 'block';
+            list.innerHTML = '';
+            
+            allDevices.forEach(device => {
+                const ip = device.ip || 'Unknown';
+                const name = device.display_name || device.hostname || ip;
+                
+                // Get traffic data - check multiple possible locations
+                const trafficStats = device.traffic_stats || {};
+                let packets = device.packets;
+                let bytes = device.bytes;
+                let uploadBps = device.upload_bps;
+                let downloadBps = device.download_bps;
+                
+                // Fallback to traffic_stats if direct properties are undefined
+                if (packets === undefined || packets === null) packets = trafficStats.packets || 0;
+                if (bytes === undefined || bytes === null) bytes = trafficStats.bytes || 0;
+                if (uploadBps === undefined || uploadBps === null) uploadBps = trafficStats.upload_bps || 0;
+                if (downloadBps === undefined || downloadBps === null) downloadBps = trafficStats.download_bps || 0;
+                
+                // Ensure we have numbers
+                packets = Number(packets) || 0;
+                bytes = Number(bytes) || 0;
+                uploadBps = Number(uploadBps) || 0;
+                downloadBps = Number(downloadBps) || 0;
+                
+                // Status: green if packets > 0, gray if 0
+                const isActive = packets > 0;
+                
+                const deviceCard = document.createElement('div');
+                deviceCard.style.cssText = `
+                    background: #1e293b;
+                    border: 1px solid #334155;
+                    border-radius: 8px;
+                    padding: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.2s;
+                `;
+                deviceCard.onmouseenter = () => {
+                    deviceCard.style.background = '#334155';
+                    deviceCard.style.borderColor = '#475569';
+                };
+                deviceCard.onmouseleave = () => {
+                    deviceCard.style.background = '#1e293b';
+                    deviceCard.style.borderColor = '#334155';
+                };
+                
+                const leftSection = document.createElement('div');
+                leftSection.style.cssText = 'display: flex; align-items: center; gap: 12px;';
+                
+                // Status indicator (green/gray light)
+                const statusIndicator = document.createElement('div');
+                statusIndicator.style.cssText = `
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background: ${isActive ? '#4ade80' : '#64748b'};
+                    box-shadow: 0 0 8px ${isActive ? 'rgba(74, 222, 128, 0.6)' : 'rgba(100, 116, 139, 0.3)'};
+                    flex-shrink: 0;
+                    transition: all 0.3s ease;
+                `;
+                statusIndicator.title = isActive ? `Active - ${packets} packets detected` : 'Inactive - No packets';
+                
+                const nameIpSection = document.createElement('div');
+                nameIpSection.style.cssText = 'display: flex; flex-direction: column; gap: 8px;';
+                
+                const nameDiv = document.createElement('div');
+                nameDiv.style.cssText = 'font-weight: 600; color: #e2e8f0; font-size: 16px; display: flex; align-items: center; gap: 8px;';
+                nameDiv.textContent = name;
+                
+                const ipDiv = document.createElement('div');
+                ipDiv.style.cssText = 'color: #94a3b8; font-size: 14px; font-family: monospace;';
+                ipDiv.textContent = ip;
+                
+                nameIpSection.appendChild(nameDiv);
+                nameIpSection.appendChild(ipDiv);
+                
+                leftSection.appendChild(statusIndicator);
+                leftSection.appendChild(nameIpSection);
+                
+                const rightSection = document.createElement('div');
+                rightSection.style.cssText = 'display: flex; flex-direction: column; gap: 8px; align-items: flex-end;';
+                
+                const statsDiv = document.createElement('div');
+                statsDiv.style.cssText = 'display: flex; gap: 16px; font-size: 13px;';
+                
+                const packetsDiv = document.createElement('div');
+                packetsDiv.style.cssText = 'color: #94a3b8;';
+                packetsDiv.innerHTML = `<span style="color: #64748b;">Packets:</span> <span style="color: #e2e8f0; font-weight: 600;">${packets}</span>`;
+                
+                const bytesDiv = document.createElement('div');
+                bytesDiv.style.cssText = 'color: #94a3b8;';
+                const bytesFormatted = formatBytes(bytes);
+                bytesDiv.innerHTML = `<span style="color: #64748b;">Bytes:</span> <span style="color: #e2e8f0; font-weight: 600;">${bytesFormatted}</span>`;
+                
+                statsDiv.appendChild(packetsDiv);
+                statsDiv.appendChild(bytesDiv);
+                
+                const speedDiv = document.createElement('div');
+                speedDiv.style.cssText = 'display: flex; gap: 16px; font-size: 13px;';
+                
+                const uploadDiv = document.createElement('div');
+                uploadDiv.style.cssText = 'color: #94a3b8;';
+                const uploadFormatted = formatBps(uploadBps);
+                uploadDiv.innerHTML = `<span style="color: #64748b;">↑ Upload:</span> <span style="color: #4ade80; font-weight: 600;">${uploadFormatted}</span>`;
+                
+                const downloadDiv = document.createElement('div');
+                downloadDiv.style.cssText = 'color: #94a3b8;';
+                const downloadFormatted = formatBps(downloadBps);
+                downloadDiv.innerHTML = `<span style="color: #64748b;">↓ Download:</span> <span style="color: #60a5fa; font-weight: 600;">${downloadFormatted}</span>`;
+                
+                speedDiv.appendChild(uploadDiv);
+                speedDiv.appendChild(downloadDiv);
+                
+                rightSection.appendChild(statsDiv);
+                rightSection.appendChild(speedDiv);
+                
+                deviceCard.appendChild(leftSection);
+                deviceCard.appendChild(rightSection);
+                
+                // Make it clickable to go to device page
+                deviceCard.style.cursor = 'pointer';
+                deviceCard.onclick = () => {
+                    window.location.href = `/device.html?ip=${encodeURIComponent(ip)}`;
+                };
+                
+                list.appendChild(deviceCard);
+            });
+        }
+        
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
         }
 
         function updateStats() {
@@ -515,6 +675,11 @@
                 
                 const isRouter = getDeviceType(device) === 'router';
                 const openPorts = getOpenPorts(device);
+                
+                // Get packet count for status indicator
+                const trafficStats = device.traffic_stats || {};
+                const packets = Number(device.packets !== undefined ? device.packets : (trafficStats.packets || 0)) || 0;
+                const isActive = packets > 0;
 
                 const node = document.createElement('div');
                 node.className = 'device-node';
@@ -522,9 +687,23 @@
                 node.style.top = `${pos.y}%`;
 
                 node.innerHTML = `
-                    <div class="device-icon ${isRouter ? 'router' : 'device'}">
-                        <div class="pulse"></div>
-                        ${getDeviceIcon(device)}
+                    <div class="device-icon-wrapper" style="position: relative; display: inline-block;">
+                        <div class="device-icon ${isRouter ? 'router' : 'device'}">
+                            <div class="pulse"></div>
+                            ${getDeviceIcon(device)}
+                        </div>
+                        <div class="status-dot" style="
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background: ${isActive ? '#4ade80' : '#64748b'};
+                            border: 2px solid ${isRouter ? '#f59e0b' : '#3b82f6'};
+                            box-shadow: 0 0 4px ${isActive ? 'rgba(74, 222, 128, 0.8)' : 'rgba(100, 116, 139, 0.3)'};
+                            z-index: 10;
+                        "></div>
                     </div>
                     <div class="device-label">${device.display_name}</div>
                     <div class="tooltip">
@@ -634,10 +813,10 @@
             return (bps / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
         }
 
-        document.getElementById('refresh-btn').addEventListener('click', loadDevices);
 
-        // Initial load only - no auto-refresh
+        // Initial load and auto-refresh every 10 seconds to update traffic data
         loadDevices();
+        setInterval(loadDevices, 10000); // Refresh every 10 seconds to get updated traffic data
     </script>
 </body>
 </html>

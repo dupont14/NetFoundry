@@ -7,98 +7,21 @@
     "vendor_local": null,
     "vendor_api": null,
     "hostname": null,
-    "os_guess": "Canon imageRUNNER C5185 printer or Mercusys AC12G WAP",
-    "ports": [
-      {
-        "port": 22,
-        "proto": "tcp",
-        "state": "open",
-        "service": {
-          "name": "ssh",
-          "product": "OpenSSH",
-          "version": "6.6.0",
-          "extrainfo": "protocol 2.0"
-        }
-      },
-      {
-        "port": 80,
-        "proto": "tcp",
-        "state": "open",
-        "service": {
-          "name": "http",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 135,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "msrpc",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 139,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "netbios-ssn",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 445,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "microsoft-ds",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 1309,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "jtag-server",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 3580,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "nati-svrloc",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 4000,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "remoteanything",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      }
-    ],
+    "os_guess": null,
+    "ports": [],
     "display_name": "192.168.0.1"
+  },
+  {
+    "ip": "192.168.0.101",
+    "mac": "84:a9:3e:04:37:4f",
+    "vendor_hint": "Hewlett Packard",
+    "locally_admin": false,
+    "vendor_local": "HewlettP",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "HewlettP"
   },
   {
     "ip": "192.168.0.100",
@@ -108,109 +31,44 @@
     "vendor_local": "Micro-St",
     "vendor_api": null,
     "hostname": null,
-    "os_guess": "Microsoft Windows 11 21H2",
-    "ports": [
-      {
-        "port": 22,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "ssh",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 80,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "http",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 135,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "msrpc",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 139,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "netbios-ssn",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 445,
-        "proto": "tcp",
-        "state": "filtered",
-        "service": {
-          "name": "microsoft-ds",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 1309,
-        "proto": "tcp",
-        "state": "open",
-        "service": {
-          "name": "tcpwrapped",
-          "product": null,
-          "version": null,
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 3580,
-        "proto": "tcp",
-        "state": "open",
-        "service": {
-          "name": "http",
-          "product": "National Instruments LabVIEW service locator httpd",
-          "version": "1.0.0",
-          "extrainfo": null
-        }
-      },
-      {
-        "port": 4000,
-        "proto": "tcp",
-        "state": "open",
-        "service": {
-          "name": "nomachine-nx",
-          "product": "NoMachine NX Server remote desktop",
-          "version": "9.1.24",
-          "extrainfo": null
-        }
-      }
-    ],
+    "os_guess": null,
+    "ports": [],
     "display_name": "Micro-St"
   },
   {
-    "ip": "192.168.0.102",
-    "mac": "46:f4:d7:04:8d:84",
-    "vendor_hint": "(Unknown: locally administered)",
+    "ip": "192.168.0.105",
+    "mac": "ac:12:03:6f:8f:f1",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "IntelCor"
+  },
+  {
+    "ip": "192.168.0.104",
+    "mac": "5e:3e:73:a4:22:d6",
+    "vendor_hint": "",
     "locally_admin": true,
     "vendor_local": null,
     "vendor_api": null,
     "hostname": null,
     "os_guess": null,
     "ports": [],
-    "display_name": "192.168.0.102"
+    "display_name": "192.168.0.104"
+  },
+  {
+    "ip": "192.168.0.0",
+    "mac": "ff:ff:ff:ff:ff:ff",
+    "vendor_hint": "",
+    "locally_admin": true,
+    "vendor_local": "Broadcast",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "Broadcast"
   }
 ]

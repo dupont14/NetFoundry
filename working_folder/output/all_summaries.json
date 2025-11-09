@@ -1,7 +1,7 @@
 {
   "192.168.0.1": {
     "ip": "192.168.0.1",
-    "error": "Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.",
+    "error": "Command 'sudo tshark -i en0 -f 'host 192.168.0.1' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.",
     "packets": 0,
     "bytes": 0,
     "upload_bps": 0,
@@ -9,7 +9,7 @@
   },
   "192.168.0.100": {
     "ip": "192.168.0.100",
-    "error": "Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.",
+    "error": "Command 'sudo tshark -i en0 -f 'host 192.168.0.100' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.",
     "packets": 0,
     "bytes": 0,
     "upload_bps": 0,
@@ -17,7 +17,7 @@
   },
   "192.168.0.102": {
     "ip": "192.168.0.102",
-    "error": "Command 'sudo tshark -i wlan0 -f 'host 192.168.0.102' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.",
+    "error": "Command 'sudo tshark -i en0 -f 'host 192.168.0.102' -a duration:10 -w /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/output/capture_192_168_0_102.pcap' returned non-zero exit status 1.",
     "packets": 0,
     "bytes": 0,
     "upload_bps": 0,

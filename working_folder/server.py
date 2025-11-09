@@ -4,6 +4,7 @@ import os
 import subprocess
 import threading
 import time
+import re
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 import signal
@@ -43,6 +44,8 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
             self.handle_start_traffic()
         elif path == '/api/traffic/stop':
             self.handle_stop_traffic()
+        elif path == '/api/scan':
+            self.handle_scan_devices()
         else:
             self.send_response(404)
             self.end_headers()
@@ -57,13 +60,22 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
         if all_summaries_file.exists():
             try:
                 with open(all_summaries_file, 'r') as f:
-                    summaries = json.load(f)
-                return summaries
+                    data = json.load(f)
+                    # Handle both dict format {ip: summary} and list format
+                    if isinstance(data, dict):
+                        summaries = data
+                    elif isinstance(data, list):
+                        for summary in data:
+                            if 'ip' in summary:
+                                summaries[summary['ip']] = summary
+                print(f"[+] Loaded {len(summaries)} traffic summaries from all_summaries.json")
             except Exception as e:
-                print(f"Error loading all_summaries.json: {e}")
+                print(f"[!] Error loading all_summaries.json: {e}")
+                import traceback
+                traceback.print_exc()
         
-        # Fallback: load individual summary files
-        if traffic_dir.exists():
+        # Fallback: load individual summary files if all_summaries.json is empty or doesn't exist
+        if not summaries and traffic_dir.exists():
             for summary_file in traffic_dir.glob('summary_*.json'):
                 try:
                     with open(summary_file, 'r') as f:
@@ -71,7 +83,7 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
                         if 'ip' in summary:
                             summaries[summary['ip']] = summary
                 except Exception as e:
-                    print(f"Error loading {summary_file}: {e}")
+                    print(f"[!] Error loading {summary_file}: {e}")
         
         return summaries
     
@@ -341,6 +353,491 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
         except Exception as e:
             self.send_json_response({'error': str(e)}, 500)
     
+    def parse_arp_scan_output(self, text):
+        """Parse arp-scan output and return list of devices"""
+        devices = []
+        for line in text.splitlines():
+            line = line.strip()
+            if not line or line.startswith('Interface:') or line.startswith('Starting') or line.startswith('Ending'):
+                continue
+            
+            # Try tab-separated format first: "IP\tMAC\tVendor"
+            parts = line.split('\t')
+            if len(parts) >= 2:
+                ip = parts[0].strip()
+                mac = parts[1].strip()
+                vendor = parts[2].strip() if len(parts) > 2 else ""
+            else:
+                # Try space-separated format: "IP MAC Vendor"
+                parts = line.split()
+                if len(parts) >= 2:
+                    ip = parts[0].strip()
+                    mac = parts[1].strip()
+                    vendor = ' '.join(parts[2:]).strip() if len(parts) > 2 else ""
+                else:
+                    continue
+            
+            # Validate IP and MAC format
+            ip_pattern = r'^\d+\.\d+\.\d+\.\d+$'
+            mac_pattern = r'^([0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}$'
+            
+            if re.match(ip_pattern, ip) and re.match(mac_pattern, mac):
+                # Normalize MAC address (convert to lowercase, use colons)
+                mac = mac.lower().replace('-', ':')
+                
+                # Filter out broadcast and multicast addresses
+                if not ip.endswith('.255') and not ip.endswith('.0') and \
+                   not ip.startswith('224.') and not ip.startswith('239.'):
+                    devices.append({
+                        "ip": ip,
+                        "mac": mac,
+                        "vendor_hint": vendor
+                    })
+        
+        return devices
+    
+    def get_network_range(self):
+        """Get the local network range from interface"""
+        try:
+            # Try to get network info from ifconfig or ip command
+            result = subprocess.run(["ifconfig", "en0"], capture_output=True, text=True, timeout=5)
+            if result.returncode == 0:
+                # Look for inet line: "inet 192.168.0.100 netmask 0xffffff00 broadcast 192.168.0.255"
+                for line in result.stdout.splitlines():
+                    if 'inet ' in line and '127.0.0.1' not in line:
+                        parts = line.split()
+                        for i, part in enumerate(parts):
+                            if part == 'inet' and i + 1 < len(parts):
+                                ip = parts[i + 1]
+                                ip_parts = ip.split('.')
+                                if len(ip_parts) == 4:
+                                    return f"{ip_parts[0]}.{ip_parts[1]}.{ip_parts[2]}.0/24"
+        except:
+            pass
+        return None
+    
+    def nmap_ping_sweep(self, network_range):
+        """Use nmap to do a ping sweep of the network"""
+        devices = []
+        try:
+            # Use nmap -sn (ping scan) with ARP scan to get MAC addresses
+            # -PR uses ARP ping which is faster and gets MAC addresses
+            cmd = ["sudo", "nmap", "-sn", "-PR", network_range]
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            
+            if result.returncode == 0:
+                current_ip = None
+                current_mac = None
+                current_vendor = ""
+                
+                # Parse nmap output
+                for line in result.stdout.splitlines():
+                    # Look for "Nmap scan report for 192.168.0.100"
+                    ip_match = re.search(r'Nmap scan report for (\d+\.\d+\.\d+\.\d+)', line)
+                    if ip_match:
+                        current_ip = ip_match.group(1)
+                        current_mac = None
+                        current_vendor = ""
+                    
+                    # Look for MAC address: "MAC Address: AA:BB:CC:DD:EE:FF (Vendor)"
+                    mac_match = re.search(r'MAC Address:\s+([0-9A-Fa-f:]{17})\s*(?:\(([^)]+)\))?', line, re.IGNORECASE)
+                    if mac_match:
+                        current_mac = mac_match.group(1).lower()
+                        if len(mac_match.groups()) > 1 and mac_match.group(2):
+                            current_vendor = mac_match.group(2)
+                    
+                    # When we have both IP and MAC, add the device
+                    if current_ip and current_mac:
+                        # Filter out invalid IPs
+                        if not current_ip.endswith('.255') and not current_ip.endswith('.0') and \
+                           not current_ip.startswith('224.') and not current_ip.startswith('239.'):
+                            devices.append({
+                                "ip": current_ip,
+                                "mac": current_mac,
+                                "vendor_hint": current_vendor
+                            })
+                            # Reset to avoid duplicates
+                            current_ip = None
+                            current_mac = None
+                            current_vendor = ""
+                    
+                    # Also try to get MAC from ARP table if nmap didn't provide it
+                    if current_ip and not current_mac:
+                        try:
+                            arp_result = subprocess.run(["arp", "-n", current_ip], capture_output=True, text=True, timeout=2)
+                            if arp_result.returncode == 0:
+                                mac_match = re.search(r'at\s+([0-9A-Fa-f:]{17})', arp_result.stdout)
+                                if mac_match:
+                                    current_mac = mac_match.group(1).lower()
+                                    if current_ip and current_mac:
+                                        devices.append({
+                                            "ip": current_ip,
+                                            "mac": current_mac,
+                                            "vendor_hint": ""
+                                        })
+                                        current_ip = None
+                                        current_mac = None
+                        except:
+                            pass
+        except Exception as e:
+            print(f"Error in nmap ping sweep: {e}")
+        return devices
+    
+    def nmap_scan_ip_range(self, base_ip, start, end):
+        """Scan a range of IPs using nmap to find devices and get MAC addresses"""
+        devices = []
+        try:
+            # Build IP range string like "192.168.0.101-110"
+            ip_parts = base_ip.split('.')
+            if len(ip_parts) == 4:
+                network_base = f"{ip_parts[0]}.{ip_parts[1]}.{ip_parts[2]}"
+                ip_range = f"{network_base}.{start}-{end}"
+                
+                print(f"[+] Scanning IP range {ip_range} with nmap...")
+                # Use nmap -sn -PR to do ARP ping scan and get MAC addresses
+                cmd = ["sudo", "nmap", "-sn", "-PR", ip_range]
+                result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+                
+                if result.returncode == 0:
+                    current_ip = None
+                    current_mac = None
+                    current_vendor = ""
+                    
+                    # Parse nmap output
+                    for line in result.stdout.splitlines():
+                        # Look for "Nmap scan report for 192.168.0.101"
+                        ip_match = re.search(r'Nmap scan report for (\d+\.\d+\.\d+\.\d+)', line)
+                        if ip_match:
+                            current_ip = ip_match.group(1)
+                            current_mac = None
+                            current_vendor = ""
+                        
+                        # Look for MAC address: "MAC Address: AA:BB:CC:DD:EE:FF (Vendor)"
+                        mac_match = re.search(r'MAC Address:\s+([0-9A-Fa-f:]{17})\s*(?:\(([^)]+)\))?', line, re.IGNORECASE)
+                        if mac_match:
+                            current_mac = mac_match.group(1).lower()
+                            if len(mac_match.groups()) > 1 and mac_match.group(2):
+                                current_vendor = mac_match.group(2)
+                        
+                        # When we have both IP and MAC, add the device
+                        if current_ip and current_mac:
+                            devices.append({
+                                "ip": current_ip,
+                                "mac": current_mac,
+                                "vendor_hint": current_vendor
+                            })
+                            print(f"[+] Found device: {current_ip} ({current_mac})")
+                            # Reset to avoid duplicates
+                            current_ip = None
+                            current_mac = None
+                            current_vendor = ""
+                        
+                        # Also try to get MAC from ARP table if nmap found IP but no MAC
+                        if current_ip and not current_mac:
+                            try:
+                                arp_result = subprocess.run(["arp", "-n", current_ip], capture_output=True, text=True, timeout=2)
+                                if arp_result.returncode == 0:
+                                    mac_match = re.search(r'at\s+([0-9A-Fa-f:]{17})', arp_result.stdout)
+                                    if mac_match:
+                                        current_mac = mac_match.group(1).lower()
+                                        if current_ip and current_mac:
+                                            devices.append({
+                                                "ip": current_ip,
+                                                "mac": current_mac,
+                                                "vendor_hint": ""
+                                            })
+                                            print(f"[+] Found device (from ARP): {current_ip} ({current_mac})")
+                                            current_ip = None
+                                            current_mac = None
+                            except:
+                                pass
+        except Exception as e:
+            print(f"Error in nmap IP range scan: {e}")
+        return devices
+    
+    def scan_devices_internal(self):
+        """Internal method to scan devices (can be called without HTTP request)"""
+        try:
+            scanned_devices = []
+            
+            # Get the network base IP (e.g., 192.168.0.1)
+            network_range = self.get_network_range()
+            if not network_range:
+                # Fallback: try to get from ifconfig
+                try:
+                    result = subprocess.run(["ifconfig", "en0"], capture_output=True, text=True, timeout=5)
+                    if result.returncode == 0:
+                        for line in result.stdout.splitlines():
+                            if 'inet ' in line and '127.0.0.1' not in line:
+                                parts = line.split()
+                                for i, part in enumerate(parts):
+                                    if part == 'inet' and i + 1 < len(parts):
+                                        ip = parts[i + 1]
+                                        network_range = ip.rsplit('.', 1)[0] + '.0/24'
+                                        break
+                except:
+                    pass
+            
+            if network_range:
+                # Extract base IP (e.g., "192.168.0" from "192.168.0.0/24")
+                base_ip = network_range.split('/')[0]
+                base_parts = base_ip.split('.')
+                if len(base_parts) == 4:
+                    base_ip = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}.1"
+            
+            # Scan multiple ranges: router (1), common range (101-110), and a few others
+            scan_ranges = [
+                (1, 1),      # Router at .1
+                (100, 110),  # Common device range
+                (2, 10),     # Early range
+                (50, 60),    # Mid range
+            ]
+            
+            for start, end in scan_ranges:
+                devices = self.nmap_scan_ip_range(base_ip, start, end)
+                # Add devices that aren't already found
+                existing_ips = {d['ip'] for d in scanned_devices}
+                for dev in devices:
+                    if dev['ip'] not in existing_ips:
+                        scanned_devices.append(dev)
+            
+            # Also check ARP table for any devices we might have missed
+            try:
+                arp_result = subprocess.run(["arp", "-an"], capture_output=True, text=True, timeout=5)
+                if arp_result.returncode == 0:
+                    existing_ips = {d['ip'] for d in scanned_devices}
+                    for line in arp_result.stdout.splitlines():
+                        match = re.search(r'\?\s+\((\d+\.\d+\.\d+\.\d+)\)\s+at\s+([0-9A-Fa-f:]{17})', line)
+                        if match:
+                            ip = match.group(1)
+                            mac = match.group(2).lower()
+                            if ip not in existing_ips and not ip.endswith('.255') and not ip.endswith('.0'):
+                                scanned_devices.append({
+                                    "ip": ip,
+                                    "mac": mac,
+                                    "vendor_hint": ""
+                                })
+                                print(f"[+] ARP table found additional device: {ip}")
+            except Exception as e:
+                print(f"[!] ARP table check error: {e}")
+            
+            if not scanned_devices:
+                print("[!] No devices found in scan")
+                return False
+            
+            print(f"[+] Total devices found: {len(scanned_devices)}")
+            
+            # Load existing devices
+            devices_file = 'network-devices.json'
+            existing_devices = []
+            if os.path.exists(devices_file):
+                try:
+                    with open(devices_file, 'r') as f:
+                        existing_devices = json.load(f)
+                        if not isinstance(existing_devices, list):
+                            existing_devices = []
+                except:
+                    existing_devices = []
+            
+            # Create a map of existing devices by IP
+            existing_by_ip = {d.get('ip'): d for d in existing_devices if d.get('ip')}
+            
+            # Merge scanned devices with existing devices
+            # Keep existing device data (ports, OS, etc.) but update MAC/vendor if changed
+            merged_devices = []
+            seen_ips = set()
+            
+            # Add scanned devices (new or updated)
+            for scanned in scanned_devices:
+                ip = scanned['ip']
+                seen_ips.add(ip)
+                
+                if ip in existing_by_ip:
+                    # Update existing device with new MAC/vendor if changed
+                    existing = existing_by_ip[ip].copy()
+                    existing['mac'] = scanned['mac']
+                    if scanned.get('vendor_hint'):
+                        existing['vendor_hint'] = scanned['vendor_hint']
+                    merged_devices.append(existing)
+                else:
+                    # New device - create basic entry
+                    merged_devices.append({
+                        "ip": ip,
+                        "mac": scanned['mac'],
+                        "vendor_hint": scanned.get('vendor_hint', ''),
+                        "locally_admin": False,
+                        "vendor_local": None,
+                        "vendor_api": None,
+                        "hostname": None,
+                        "os_guess": None,
+                        "ports": [],
+                        "display_name": ip
+                    })
+            
+            # Add existing devices that weren't in the scan (preserve them)
+            for existing in existing_devices:
+                ip = existing.get('ip')
+                if ip and ip not in seen_ips:
+                    merged_devices.append(existing)
+            
+            # Save merged devices
+            with open(devices_file, 'w') as f:
+                json.dump(merged_devices, f, indent=2)
+            
+            print(f"[+] Saved {len(merged_devices)} devices to network-devices.json")
+            return True
+            
+        except subprocess.TimeoutExpired:
+            print("[!] Scan timed out")
+            return False
+        except Exception as e:
+            print(f"[!] Error during scan: {e}")
+            return False
+    
+    def handle_scan_devices(self):
+        """HTTP handler for scan endpoint"""
+        try:
+            scanned_devices = []
+            
+            # Get the network base IP (e.g., 192.168.0.1)
+            network_range = self.get_network_range()
+            if not network_range:
+                # Fallback: try to get from ifconfig
+                try:
+                    result = subprocess.run(["ifconfig", "en0"], capture_output=True, text=True, timeout=5)
+                    if result.returncode == 0:
+                        for line in result.stdout.splitlines():
+                            if 'inet ' in line and '127.0.0.1' not in line:
+                                parts = line.split()
+                                for i, part in enumerate(parts):
+                                    if part == 'inet' and i + 1 < len(parts):
+                                        ip = parts[i + 1]
+                                        network_range = ip.rsplit('.', 1)[0] + '.0/24'
+                                        break
+                except:
+                    pass
+            
+            if network_range:
+                # Extract base IP (e.g., "192.168.0" from "192.168.0.0/24")
+                base_ip = network_range.split('/')[0]
+                base_parts = base_ip.split('.')
+                if len(base_parts) == 4:
+                    base_ip = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}.1"
+            
+            # Scan multiple ranges: router (1), common range (101-110), and a few others
+            scan_ranges = [
+                (1, 1),      # Router at .1
+                (100, 110),  # Common device range
+                (2, 10),     # Early range
+                (50, 60),    # Mid range
+            ]
+            
+            for start, end in scan_ranges:
+                devices = self.nmap_scan_ip_range(base_ip, start, end)
+                # Add devices that aren't already found
+                existing_ips = {d['ip'] for d in scanned_devices}
+                for dev in devices:
+                    if dev['ip'] not in existing_ips:
+                        scanned_devices.append(dev)
+            
+            # Also check ARP table for any devices we might have missed
+            try:
+                arp_result = subprocess.run(["arp", "-an"], capture_output=True, text=True, timeout=5)
+                if arp_result.returncode == 0:
+                    existing_ips = {d['ip'] for d in scanned_devices}
+                    for line in arp_result.stdout.splitlines():
+                        match = re.search(r'\?\s+\((\d+\.\d+\.\d+\.\d+)\)\s+at\s+([0-9A-Fa-f:]{17})', line)
+                        if match:
+                            ip = match.group(1)
+                            mac = match.group(2).lower()
+                            if ip not in existing_ips and not ip.endswith('.255') and not ip.endswith('.0'):
+                                scanned_devices.append({
+                                    "ip": ip,
+                                    "mac": mac,
+                                    "vendor_hint": ""
+                                })
+                                print(f"[+] ARP table found additional device: {ip}")
+            except Exception as e:
+                print(f"[!] ARP table check error: {e}")
+            
+            if not scanned_devices:
+                self.send_json_response({
+                    'success': False,
+                    'error': 'No devices found. Make sure you are on the network and devices are connected.'
+                }, 400)
+                return
+            
+            print(f"[+] Total devices found: {len(scanned_devices)}")
+            
+            # Load existing devices
+            devices_file = 'network-devices.json'
+            existing_devices = []
+            if os.path.exists(devices_file):
+                try:
+                    with open(devices_file, 'r') as f:
+                        existing_devices = json.load(f)
+                        if not isinstance(existing_devices, list):
+                            existing_devices = []
+                except:
+                    existing_devices = []
+            
+            # Create a map of existing devices by IP
+            existing_by_ip = {d.get('ip'): d for d in existing_devices if d.get('ip')}
+            
+            # Merge scanned devices with existing devices
+            # Keep existing device data (ports, OS, etc.) but update MAC/vendor if changed
+            merged_devices = []
+            seen_ips = set()
+            
+            # Add scanned devices (new or updated)
+            for scanned in scanned_devices:
+                ip = scanned['ip']
+                seen_ips.add(ip)
+                
+                if ip in existing_by_ip:
+                    # Update existing device with new MAC/vendor if changed
+                    existing = existing_by_ip[ip].copy()
+                    existing['mac'] = scanned['mac']
+                    if scanned.get('vendor_hint'):
+                        existing['vendor_hint'] = scanned['vendor_hint']
+                    merged_devices.append(existing)
+                else:
+                    # New device - create basic entry
+                    merged_devices.append({
+                        "ip": ip,
+                        "mac": scanned['mac'],
+                        "vendor_hint": scanned.get('vendor_hint', ''),
+                        "locally_admin": False,
+                        "vendor_local": None,
+                        "vendor_api": None,
+                        "hostname": None,
+                        "os_guess": None,
+                        "ports": [],
+                        "display_name": ip
+                    })
+            
+            # Add existing devices that weren't in the scan (preserve them)
+            for existing in existing_devices:
+                ip = existing.get('ip')
+                if ip and ip not in seen_ips:
+                    merged_devices.append(existing)
+            
+            # Save merged devices
+            with open(devices_file, 'w') as f:
+                json.dump(merged_devices, f, indent=2)
+            
+            self.send_json_response({
+                'success': True,
+                'message': f'Found {len(scanned_devices)} devices, total {len(merged_devices)} devices',
+                'scanned_count': len(scanned_devices),
+                'total_count': len(merged_devices)
+            })
+            
+        except subprocess.TimeoutExpired:
+            self.send_json_response({'success': False, 'error': 'Scan timed out'}, 500)
+        except Exception as e:
+            self.send_json_response({'success': False, 'error': str(e)}, 500)
+    
     def handle_get_traffic_data(self):
         """Get current traffic data for a device"""
         query_params = parse_qs(urlparse(self.path).query)
@@ -372,14 +869,14 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
         
         while ip in traffic_captures and capture['process'].poll() is None:
             try:
-                time.sleep(2)  # Analyze every 2 seconds
+                time.sleep(10)  # Analyze every 10 seconds
                 
                 if not os.path.exists(pcap_file):
                     continue
                 
                 # Get recent packets using tshark
-                # Read last 100 packets
-                cmd = f'tshark -r {pcap_file} -T fields -e frame.time_epoch -e ip.src -e ip.dst -e frame.len -e frame.protocols -c 100'
+                # Read last 500 packets (more for 10 second window)
+                cmd = f'tshark -r {pcap_file} -T fields -e frame.time_epoch -e ip.src -e ip.dst -e frame.len -e frame.protocols -c 500'
                 result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=5)
                 
                 if result.returncode != 0:
@@ -427,7 +924,7 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
                         continue
                 
                 # Calculate speeds (bps)
-                duration = 2.0  # 2 second window
+                duration = 10.0  # 10 second window
                 if timestamps:
                     duration = max(timestamps) - min(timestamps)
                     duration = max(duration, 0.1)
@@ -441,12 +938,12 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
                     capture['data']['bytes'] = upload_bytes + download_bytes
                     capture['data']['upload_bps'] = upload_bps
                     capture['data']['download_bps'] = download_bps
-                    # Keep only last 20 packets for display
-                    capture['data']['recent_packets'] = recent_packets[-20:]
+                    # Keep only last 50 packets for display (more for 10 second updates)
+                    capture['data']['recent_packets'] = recent_packets[-50:]
                 
             except Exception as e:
                 print(f"Error analyzing traffic for {ip}: {e}")
-                time.sleep(2)
+                time.sleep(10)  # Wait 10 seconds before retrying
     
     def serve_file(self, filename):
         """Serve a static file"""
@@ -515,8 +1012,27 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
+def run_startup_scan():
+    """Run device scan at startup"""
+    print("[+] Running initial device scan at startup...")
+    try:
+        # Create a temporary handler instance just to use the scan method
+        # We need to pass valid arguments to BaseHTTPRequestHandler
+        from io import BytesIO
+        handler = NetworkRequestHandler(BytesIO(b''), ('127.0.0.1', 8000), None)
+        handler.scan_devices_internal()
+        print("[+] Initial device scan completed")
+    except Exception as e:
+        print(f"[!] Error during startup scan: {e}")
+        import traceback
+        traceback.print_exc()
+
 if __name__ == '__main__':
     os.chdir('.')
+    
+    # Run device scan at startup
+    run_startup_scan()
+    
     server = HTTPServer(('localhost', 8000), NetworkRequestHandler)
     print('Server running on http://localhost:8000')
     print('Note: Traffic capture requires sudo privileges for tshark')

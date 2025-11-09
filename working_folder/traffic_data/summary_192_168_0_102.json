@@ -1,11 +1,15 @@
 {
   "ip": "192.168.0.102",
-  "packets": 0,
-  "bytes": 0,
-  "upload_bps": 0,
-  "download_bps": 0,
-  "protocols": {},
-  "conversations": [],
+  "packets": 12,
+  "bytes": 747,
+  "upload_bps": 860.3163645642131,
+  "download_bps": 0.0,
+  "protocols": {
+    "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\nframe                                    frames:12 bytes:831\n  eth                                    frames:12 bytes:831\n    ip                                   frames:10 bytes:747\n      udp                                frames:10 bytes:747\n        dns                              frames:10 bytes:747\n    arp                                  frames:2 bytes:84\n===================================================================\n"
+  },
+  "conversations": [
+    "================================================================================\nUDP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n192.168.0.102:65322        <-> 192.168.0.1:53                   0 0 bytes         3 207 bytes       3 207 bytes     3.918654000         3.0276\n192.168.0.102:63600        <-> 192.168.0.1:53                   0 0 bytes         2 162 bytes       2 162 bytes     0.000000000         4.0852\n192.168.0.102:54551        <-> 192.168.0.1:53                   0 0 bytes         1 74 bytes        1 74 bytes      1.125774000         0.0000\n192.168.0.102:58062        <-> 192.168.0.1:53                   0 0 bytes         1 74 bytes        1 74 bytes      1.125920000         0.0000\n192.168.0.102:49708        <-> 192.168.0.1:53                   0 0 bytes         1 74 bytes        1 74 bytes      3.434796000         0.0000\n192.168.0.102:51953        <-> 192.168.0.1:53                   0 0 bytes         1 78 bytes        1 78 bytes      3.434937000         0.0000\n192.168.0.102:59279        <-> 192.168.0.1:53                   0 0 bytes         1 78 bytes        1 78 bytes      3.435029000         0.0000\n================================================================================\n================================================================================\nTCP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n"
+  ],
   "http_requests": [],
   "tls_sni": []
 }
