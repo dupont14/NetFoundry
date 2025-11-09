@@ -60,6 +60,8 @@
             width: 100%;
             padding-bottom: 100%;
             min-height: 600px;
+            max-height: 800px;
+            overflow: auto;
         }
         .map-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
         .device-node {
@@ -115,16 +117,12 @@
             border-radius: 4px;
         }
         .tooltip {
-            position: absolute;
+            position: fixed;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s;
             min-width: 240px;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-bottom: 16px;
-            z-index: 1000;
+            z-index: 99999;
         }
         .tooltip.visible { opacity: 1; }
         .tooltip-content {
@@ -296,24 +294,61 @@
             return icons[type] || icons.device;
         }
 
-        function getTreePositions(tree, positions = {}, level = 0, x = 50, y = 15, spacing = 25) {
+        function getTreePositions(tree, positions = {}, level = 0, x = 50, y = 50, spacing = 25) {
             if (!tree) return positions;
             
-            // Store position for this node
-            positions[tree.ip] = { x, y, level };
+            // Router at center
+            const centerX = 50;
+            const centerY = 50;
+            positions[tree.ip] = { x: centerX, y: centerY, level: 0 };
             
-            // If this node has children, position them below
+            // If this node has children, position them in a circle around the router
             if (tree.children && tree.children.length > 0) {
                 const childCount = tree.children.length;
-                // Increase spacing significantly to prevent overlap with larger icons
-                const adjustedSpacing = Math.max(spacing, 100 / Math.max(childCount, 1));
-                const totalWidth = (childCount - 1) * adjustedSpacing;
-                const startX = x - totalWidth / 2;
+                
+                // Calculate radius based on number of devices (larger circle for more devices)
+                // Keep devices within 10-90% bounds, so max radius is about 35%
+                const baseRadius = Math.min(30, 15 + childCount * 2);
+                const radius = Math.min(baseRadius, 35); // Cap at 35% to stay within bounds
+                
+                // Calculate angle step for even distribution
+                const angleStep = (2 * Math.PI) / childCount;
+                
+                // Start angle - offset by -90 degrees (π/2) to start at top
+                const startAngle = -Math.PI / 2;
                 
                 tree.children.forEach((child, index) => {
-                    const childX = startX + index * adjustedSpacing;
-                    const childY = y + 25; // 25% down for each level (more vertical spacing)
-                    getTreePositions(child, positions, level + 1, childX, childY, adjustedSpacing);
+                    // Calculate angle for this device
+                    const angle = startAngle + (index * angleStep);
+                    
+                    // Calculate position on circle
+                    const childX = centerX + (radius * Math.cos(angle));
+                    const childY = centerY + (radius * Math.sin(angle));
+                    
+                    // Clamp to stay within bounds (10-90% for safety)
+                    const clampedX = Math.max(10, Math.min(90, childX));
+                    const clampedY = Math.max(10, Math.min(90, childY));
+                    
+                    positions[child.ip] = { x: clampedX, y: clampedY, level: 1 };
+                    
+                    // If children have children, position them in a smaller circle
+                    if (child.children && child.children.length > 0) {
+                        const grandchildCount = child.children.length;
+                        const grandchildRadius = Math.min(15, 8 + grandchildCount);
+                        const grandchildAngleStep = (2 * Math.PI) / grandchildCount;
+                        const grandchildStartAngle = angle - (grandchildAngleStep * grandchildCount / 2);
+                        
+                        child.children.forEach((grandchild, grandchildIndex) => {
+                            const grandchildAngle = grandchildStartAngle + (grandchildIndex * grandchildAngleStep);
+                            const grandchildX = clampedX + (grandchildRadius * Math.cos(grandchildAngle));
+                            const grandchildY = clampedY + (grandchildRadius * Math.sin(grandchildAngle));
+                            
+                            const clampedGcX = Math.max(10, Math.min(90, grandchildX));
+                            const clampedGcY = Math.max(10, Math.min(90, grandchildY));
+                            
+                            positions[grandchild.ip] = { x: clampedGcX, y: clampedGcY, level: 2 };
+                        });
+                    }
                 });
             }
             
@@ -635,6 +670,9 @@
             const svg = document.getElementById('connections-svg');
             container.innerHTML = '';
             svg.innerHTML = '';
+            
+            // Remove all existing tooltips from body
+            document.querySelectorAll('.tooltip').forEach(tooltip => tooltip.remove());
 
             if (!deviceTree) return;
 
@@ -706,73 +744,87 @@
                         "></div>
                     </div>
                     <div class="device-label">${device.display_name}</div>
-                    <div class="tooltip">
-                        <div class="tooltip-content">
-                            <div class="tooltip-title">${device.display_name}</div>
-                            <div class="tooltip-row">
-                                <span class="tooltip-label">IP:</span>
-                                <span class="tooltip-value">${device.ip}</span>
-                            </div>
-                            <div class="tooltip-row">
-                                <span class="tooltip-label">MAC:</span>
-                                <span class="tooltip-value">${device.mac}</span>
-                            </div>
-                            ${device.vendor_local ? `
-                                <div class="tooltip-row">
-                                    <span class="tooltip-label">Vendor:</span>
-                                    <span class="tooltip-value">${device.vendor_local}</span>
-                                </div>
-                            ` : ''}
-                            ${device.os_guess ? `
-                                <div class="tooltip-section">
-                                    <div class="tooltip-label" style="margin-bottom: 4px;">OS:</div>
-                                    <div class="tooltip-value" style="font-size: 11px; line-height: 1.4;">${device.os_guess}</div>
-                                </div>
-                            ` : ''}
-                            ${(device.packets !== undefined || device.bytes !== undefined || device.upload_bps !== undefined || device.download_bps !== undefined) ? `
-                                <div class="tooltip-section">
-                                    <div class="tooltip-label" style="margin-bottom: 4px;">Traffic Stats:</div>
-                                    ${device.packets !== undefined ? `
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Packets:</span>
-                                            <span class="tooltip-value">${device.packets.toLocaleString()}</span>
-                                        </div>
-                                    ` : ''}
-                                    ${device.bytes !== undefined ? `
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Bytes:</span>
-                                            <span class="tooltip-value">${formatBytes(device.bytes)}</span>
-                                        </div>
-                                    ` : ''}
-                                    ${device.upload_bps !== undefined ? `
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Upload:</span>
-                                            <span class="tooltip-value">${formatBps(device.upload_bps)}</span>
-                                        </div>
-                                    ` : ''}
-                                    ${device.download_bps !== undefined ? `
-                                        <div class="tooltip-row">
-                                            <span class="tooltip-label">Download:</span>
-                                            <span class="tooltip-value">${formatBps(device.download_bps)}</span>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
-                            ${openPorts.length > 0 ? `
-                                <div class="tooltip-section">
-                                    <div class="tooltip-label" style="margin-bottom: 4px;">Open Ports:</div>
-                                    <div class="open-ports">${openPorts.join(', ')}</div>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
                 `;
 
+                // Create tooltip as a top-level element appended to body
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.id = `tooltip-${device.ip}`;
+                tooltip.innerHTML = `
+                    <div class="tooltip-content">
+                        <div class="tooltip-title">${device.display_name}</div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-label">IP:</span>
+                            <span class="tooltip-value">${device.ip}</span>
+                        </div>
+                        <div class="tooltip-row">
+                            <span class="tooltip-label">MAC:</span>
+                            <span class="tooltip-value">${device.mac}</span>
+                        </div>
+                        ${device.vendor_local ? `
+                            <div class="tooltip-row">
+                                <span class="tooltip-label">Vendor:</span>
+                                <span class="tooltip-value">${device.vendor_local}</span>
+                            </div>
+                        ` : ''}
+                        ${device.os_guess ? `
+                            <div class="tooltip-section">
+                                <div class="tooltip-label" style="margin-bottom: 4px;">OS:</div>
+                                <div class="tooltip-value" style="font-size: 11px; line-height: 1.4;">${device.os_guess}</div>
+                            </div>
+                        ` : ''}
+                        ${(device.packets !== undefined || device.bytes !== undefined || device.upload_bps !== undefined || device.download_bps !== undefined) ? `
+                            <div class="tooltip-section">
+                                <div class="tooltip-label" style="margin-bottom: 4px;">Traffic Stats:</div>
+                                ${device.packets !== undefined ? `
+                                    <div class="tooltip-row">
+                                        <span class="tooltip-label">Packets:</span>
+                                        <span class="tooltip-value">${device.packets.toLocaleString()}</span>
+                                    </div>
+                                ` : ''}
+                                ${device.bytes !== undefined ? `
+                                    <div class="tooltip-row">
+                                        <span class="tooltip-label">Bytes:</span>
+                                        <span class="tooltip-value">${formatBytes(device.bytes)}</span>
+                                    </div>
+                                ` : ''}
+                                ${device.upload_bps !== undefined ? `
+                                    <div class="tooltip-row">
+                                        <span class="tooltip-label">Upload:</span>
+                                        <span class="tooltip-value">${formatBps(device.upload_bps)}</span>
+                                    </div>
+                                ` : ''}
+                                ${device.download_bps !== undefined ? `
+                                    <div class="tooltip-row">
+                                        <span class="tooltip-label">Download:</span>
+                                        <span class="tooltip-value">${formatBps(device.download_bps)}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        ` : ''}
+                        ${openPorts.length > 0 ? `
+                            <div class="tooltip-section">
+                                <div class="tooltip-label" style="margin-bottom: 4px;">Open Ports:</div>
+                                <div class="open-ports">${openPorts.join(', ')}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                document.body.appendChild(tooltip);
+
                 const icon = node.querySelector('.device-icon');
-                const tooltip = node.querySelector('.tooltip');
                 const line = document.getElementById(`line-${device.ip}`);
 
-                icon.addEventListener('mouseenter', () => {
+                icon.addEventListener('mouseenter', (e) => {
+                    // Get the device node's position on the page
+                    const rect = node.getBoundingClientRect();
+                    const iconRect = icon.getBoundingClientRect();
+                    
+                    // Position tooltip above the device icon
+                    tooltip.style.left = `${iconRect.left + iconRect.width / 2}px`;
+                    tooltip.style.top = `${iconRect.top - 16}px`;
+                    tooltip.style.transform = 'translate(-50%, -100%)';
+                    
                     tooltip.classList.add('visible');
                     if (line) line.classList.replace('inactive', 'active');
                 });

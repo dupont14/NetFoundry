@@ -1587,3 +1587,512 @@ Capturing on 'Wi-Fi: en0'
 [+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
 Capturing on 'Wi-Fi: en0'
 0 packets captured
+Capturing on 'Wi-Fi: en0'
+61 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.101, 192.168.0.100, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 34 packets, 6318.74↑ 8607.11↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 18 packets, 5370.29↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 37 packets, 12698.50↑ 6012.10↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+36 packets captured
+[+] Analyzing 7 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.101, 192.168.0.100, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 32 packets, 0.00↑ 2687.54↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 32 packets, 2687.54↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+42 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.107, 192.168.0.102, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 39 packets, 0.00↑ 2873.69↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 39 packets, 2873.69↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+14 packets captured
+Capturing on 'Wi-Fi: en0'
+11 packets captured
+[+] Analyzing 9 devices: 192.168.0.1, 192.168.0.107, 192.168.0.105, 192.168.0.107, 192.168.0.102, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 10 packets, 0.00↑ 1577.59↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 10 packets, 1577.59↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+4 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.107, 192.168.0.105, 192.168.0.102, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 3 packets, 77.64↑ 267.10↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 2 packets, 6062355.36↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+13 packets captured
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+Capturing on 'Wi-Fi: en0'
+1 packet captured
+[+] Analyzing 15 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.102, 192.168.0.102, 192.168.0.102, 192.168.0.102, 192.168.0.102, 192.168.0.102, 192.168.0.102, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+30 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 4295413.57↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 8 packets, 16968.28↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 10 packets, 2502.26↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 3 packets, 1792.96↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+64 packets captured
+Capturing on 'Wi-Fi: en0'
+4 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 2755937.35↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 3 packets, 1996.04↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+0 packets captured
+Capturing on 'Wi-Fi: en0'
+10 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.105, 192.168.0.102, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 6 packets, 48.07↑ 371.11↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 6 packets, 789.34↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+9 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 3 packets, 127.77↑ 393.53↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 3 packets, 2240.94↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+20 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 0.00↑ 1060.35↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 1 packets, 1464000000.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 16 packets, 1421.70↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+25 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 21 packets, 0.00↑ 1537.23↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 21 packets, 1537.23↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+20 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 12 packets, 0.00↑ 1044.05↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 15 packets, 1335.42↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+22 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 0.00↑ 1402.20↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 18 packets, 1402.20↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+9 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 3 packets, 341.17↑ 1105.38↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 3 packets, 1176.93↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+11 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 10 packets, 54.53↑ 771.11↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 10 packets, 830.01↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+21 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 19 packets, 0.00↑ 1792.38↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 19 packets, 1792.38↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+18 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 14 packets, 0.00↑ 1334.53↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 14 packets, 1334.53↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+9 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 6 packets, 0.00↑ 1433.59↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 6 packets, 1433.59↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+27 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.105, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 16 packets, 0.00↑ 1143.74↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 16 packets, 1143.74↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+19 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.105, 192.168.0.102, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 14 packets, 44.26↑ 938.26↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 13 packets, 938.26↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+10 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.105, 192.168.0.102, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 312.96↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 3 packets, 417.28↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+11 packets captured
+Capturing on 'Wi-Fi: en0'
+9 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.105, 192.168.0.102, 192.168.0.107, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 5 packets, 0.00↑ 328.43↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[✓] 192.168.0.102: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.107)
+[✓] 192.168.0.107: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 6 packets, 411.17↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+7 packets captured
