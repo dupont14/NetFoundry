@@ -1,0 +1,24 @@
+{
+  "ip": "192.168.0.102",
+  "packets": 0,
+  "bytes": 0,
+  "upload_bps": 0,
+  "download_bps": 0,
+  "protocols": {},
+  "conversations": [],
+  "http_requests": [],
+  "tls_sni": [],
+  "analyzed_at": "2025-11-09T01:36:52.797510Z",
+  "_device_metadata": {
+    "ip": "192.168.0.102",
+    "mac": "46:f4:d7:04:8d:84",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "192.168.0.102"
+  }
+}

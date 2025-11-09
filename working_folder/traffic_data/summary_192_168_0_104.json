@@ -1,0 +1,117 @@
+{
+  "ip": "192.168.0.104",
+  "packets": 3,
+  "bytes": 330,
+  "upload_bps": 911.5604381926098,
+  "download_bps": 0.0,
+  "protocols": {
+    "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\neth                                      frames:3 bytes:330\n  ip                                     frames:3 bytes:330\n    udp                                  frames:3 bytes:330\n      nbns                               frames:3 bytes:330\n===================================================================\n"
+  },
+  "conversations": [
+    "================================================================================\nUDP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n192.168.0.104:137          <-> 192.168.0.255:137                0 0 bytes         3 330 bytes       3 330 bytes     0.000000000         2.8961\n================================================================================\n================================================================================\nTCP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n"
+  ],
+  "http_requests": [],
+  "tls_sni": [],
+  "analyzed_at": "2025-11-09T01:36:41.716577Z",
+  "_device_metadata": {
+    "ip": "192.168.0.104",
+    "mac": "e6:eb:7e:7c:26:03",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.104"
+  }
+}
