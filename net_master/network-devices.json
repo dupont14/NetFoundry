@@ -1,0 +1,342 @@
+[
+  {
+    "ip": "192.168.0.1",
+    "mac": "8c:90:2d:2b:89:cb",
+    "vendor_hint": "(Unknown)",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "ssh",
+          "product": "OpenSSH",
+          "version": "6.6.0",
+          "extrainfo": "protocol 2.0"
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.1"
+  },
+  {
+    "ip": "192.168.0.100",
+    "mac": "d8:bb:c1:b1:04:11",
+    "vendor_hint": "Micro-Star INTL CO., LTD.",
+    "locally_admin": false,
+    "vendor_local": "Micro-St",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "Micro-St"
+  },
+  {
+    "ip": "192.168.0.101",
+    "mac": "84:a9:3e:04:37:4f",
+    "vendor_hint": "Hewlett Packard",
+    "locally_admin": false,
+    "vendor_local": "HewlettP",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "open",
+        "service": {
+          "name": "ssh",
+          "product": "OpenSSH",
+          "version": "10.0p2 Debian 8",
+          "extrainfo": "protocol 2.0"
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "HewlettP"
+  },
+  {
+    "ip": "192.168.0.103",
+    "mac": "c4:23:60:8d:9c:9e",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "IntelCor"
+  },
+  {
+    "ip": "192.168.0.102",
+    "mac": "46:f4:d7:04:8d:84",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.102"
+  }
+]
