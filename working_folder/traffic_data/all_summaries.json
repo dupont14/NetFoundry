@@ -2,11 +2,11 @@
   "192.168.0.1": {
     "ip": "192.168.0.1",
     "packets": 3,
-    "bytes": 120,
-    "upload_bps": 137.12212545139863,
+    "bytes": 0,
+    "upload_bps": 0.0,
     "download_bps": 0.0,
     "protocols": {
-      "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\neth                                      frames:3 bytes:180\n  ip                                     frames:2 bytes:120\n    igmp                                 frames:2 bytes:120\n  arp                                    frames:1 bytes:60\n===================================================================\n"
+      "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\neth                                      frames:3 bytes:126\n  arp                                    frames:3 bytes:126\n===================================================================\n"
     },
     "conversations": [
       "================================================================================\nUDP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n================================================================================\nTCP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n"
@@ -16,16 +16,12 @@
   },
   "192.168.0.100": {
     "ip": "192.168.0.100",
-    "packets": 4,
-    "bytes": 180,
-    "upload_bps": 266.5159136288314,
-    "download_bps": 0.0,
-    "protocols": {
-      "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\neth                                      frames:4 bytes:240\n  ip                                     frames:3 bytes:180\n    igmp                                 frames:3 bytes:180\n  arp                                    frames:1 bytes:60\n===================================================================\n"
-    },
-    "conversations": [
-      "================================================================================\nUDP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n================================================================================\nTCP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n"
-    ],
+    "packets": 0,
+    "bytes": 0,
+    "upload_bps": 0,
+    "download_bps": 0,
+    "protocols": {},
+    "conversations": [],
     "http_requests": [],
     "tls_sni": []
   },
