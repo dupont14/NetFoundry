@@ -18,8 +18,8 @@
             background: rgba(30, 41, 59, 0.5);
             backdrop-filter: blur(12px);
             border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
+            padding: 16px 24px;
+            margin-bottom: 16px;
             border: 1px solid #334155;
             display: flex;
             justify-content: space-between;
@@ -42,93 +42,16 @@
             text-decoration: none;
         }
         .back-btn:hover { background: #475569; }
-        .device-info {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            border: 1px solid #334155;
-        }
-        .device-info h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #60a5fa;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .info-item {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #334155;
-        }
-        .info-label {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-bottom: 4px;
-        }
-        .info-value {
-            font-size: 14px;
-            color: #e2e8f0;
-            font-family: monospace;
-            word-break: break-all;
-        }
-        .ports-section {
-            margin-top: 24px;
-        }
-        .ports-section h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #60a5fa;
-        }
-        .ports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-        }
-        .port-item {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #334155;
-        }
-        .port-item.open {
-            border-color: #4ade80;
-        }
-        .port-item.filtered {
-            border-color: #fbbf24;
-        }
-        .traffic-section {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
-            padding: 24px;
-            border: 1px solid #334155;
-        }
-        .traffic-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .traffic-header h2 {
-            font-size: 24px;
-            color: #60a5fa;
-        }
         .traffic-status {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
+            font-size: 12px;
+            color: #94a3b8;
         }
         .status-indicator {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: #64748b;
         }
@@ -140,59 +63,214 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        .traffic-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
+        
+        /* Device info in a line */
+        .device-info-line {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 16px;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
         }
-        .stat-card {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 16px;
-            border-radius: 6px;
+        .info-item-inline {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .info-label-inline {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-value-inline {
+            font-size: 14px;
+            color: #e2e8f0;
+            font-family: monospace;
+        }
+        .device-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-right: auto;
+        }
+        
+        /* Port section - minimalistic */
+        .ports-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin-bottom: 16px;
             border: 1px solid #334155;
         }
-        .stat-label {
-            font-size: 12px;
+        .ports-section h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
             color: #94a3b8;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .stat-value {
-            font-size: 24px;
-            font-weight: bold;
+        .ports-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .port-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #334155;
+        }
+        .port-badge.open {
+            border-color: #4ade80;
+            color: #4ade80;
+        }
+        .port-badge.filtered {
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+        .port-number {
+            font-family: monospace;
+            font-weight: 600;
+        }
+        .port-service {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+        
+        /* Speed section - small area */
+        .speed-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 12px 24px;
+            margin-bottom: 16px;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .speed-item {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .speed-label {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .speed-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #60a5fa;
+            font-family: monospace;
+        }
+        .speed-unit {
+            font-size: 11px;
+            color: #64748b;
+        }
+        
+        /* Scanning info - takes up most space */
+        .scanning-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 400px);
+            min-height: 400px;
+        }
+        .scanning-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .scanning-header h2 {
+            font-size: 18px;
             color: #60a5fa;
         }
-        .stat-unit {
-            font-size: 14px;
+        .scanning-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #334155;
+        }
+        .scan-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .scan-stat-label {
+            font-size: 10px;
             color: #94a3b8;
-            margin-left: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .scan-stat-value {
+            font-size: 14px;
+            color: #e2e8f0;
+            font-family: monospace;
         }
         .traffic-log {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid #334155;
             border-radius: 6px;
             padding: 16px;
-            max-height: 400px;
+            flex: 1;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
             font-size: 12px;
         }
         .log-entry {
-            padding: 4px 0;
-            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         .log-entry:last-child {
             border-bottom: none;
         }
         .log-time {
             color: #64748b;
-            margin-right: 8px;
+            min-width: 80px;
+            font-size: 11px;
+        }
+        .log-direction {
+            min-width: 70px;
+            font-weight: 600;
+            font-size: 11px;
         }
         .log-upload {
             color: #60a5fa;
         }
         .log-download {
             color: #4ade80;
+        }
+        .log-details {
+            color: #cbd5e1;
+            flex: 1;
+        }
+        .log-protocol {
+            color: #94a3b8;
+            font-size: 11px;
         }
         .empty-traffic {
             text-align: center;
@@ -209,7 +287,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
-                Back to Network Map
+                Back
             </a>
             <div class="traffic-status">
                 <div class="status-indicator" id="status-indicator"></div>
@@ -217,30 +295,44 @@
             </div>
         </div>
 
-        <div class="device-info" id="device-info">
-            <h2>Loading device information...</h2>
+        <!-- Device info in a line -->
+        <div class="device-info-line" id="device-info-line">
+            <div class="device-name">Loading...</div>
         </div>
 
-        <div class="traffic-section">
-            <div class="traffic-header">
-                <h2>Network Traffic</h2>
+        <!-- Port section - minimalistic -->
+        <div class="ports-section" id="ports-section" style="display: none;">
+            <h3>Ports</h3>
+            <div class="ports-list" id="ports-list"></div>
+        </div>
+
+        <!-- Speed section - small -->
+        <div class="speed-section" id="speed-section">
+            <div class="speed-item">
+                <span class="speed-label">Upload</span>
+                <span class="speed-value" id="speed-upload">0</span>
+                <span class="speed-unit" id="speed-upload-unit">bps</span>
             </div>
-            <div class="traffic-stats" id="traffic-stats">
-                <div class="stat-card">
-                    <div class="stat-label">Packets</div>
-                    <div class="stat-value"><span id="stat-packets">0</span></div>
+            <div class="speed-item">
+                <span class="speed-label">Download</span>
+                <span class="speed-value" id="speed-download">0</span>
+                <span class="speed-unit" id="speed-download-unit">bps</span>
+            </div>
+        </div>
+
+        <!-- Scanning info - takes up most space -->
+        <div class="scanning-section">
+            <div class="scanning-header">
+                <h2>Network Traffic Scan</h2>
+            </div>
+            <div class="scanning-stats" id="scanning-stats">
+                <div class="scan-stat">
+                    <div class="scan-stat-label">Packets</div>
+                    <div class="scan-stat-value" id="scan-packets">0</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-label">Total Bytes</div>
-                    <div class="stat-value"><span id="stat-bytes">0</span><span class="stat-unit">B</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Upload Speed</div>
-                    <div class="stat-value"><span id="stat-upload">0</span><span class="stat-unit">bps</span></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Download Speed</div>
-                    <div class="stat-value"><span id="stat-download">0</span><span class="stat-unit">bps</span></div>
+                <div class="scan-stat">
+                    <div class="scan-stat-label">Total Bytes</div>
+                    <div class="scan-stat-value" id="scan-bytes">0 B</div>
                 </div>
             </div>
             <div class="traffic-log" id="traffic-log">
@@ -267,66 +359,55 @@
                 const device = await response.json();
                 
                 if (!device || device.error) {
-                    document.getElementById('device-info').innerHTML = `
-                        <h2>Device Not Found</h2>
-                        <p>Could not find device with IP: ${deviceIp}</p>
+                    document.getElementById('device-info-line').innerHTML = `
+                        <div class="device-name">Device Not Found</div>
                     `;
                     return;
                 }
 
-                const openPorts = device.ports ? device.ports.filter(p => p.state === 'open') : [];
-                const filteredPorts = device.ports ? device.ports.filter(p => p.state === 'filtered') : [];
-
-                document.getElementById('device-info').innerHTML = `
-                    <h2>${device.display_name || deviceIp}</h2>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label">IP Address</div>
-                            <div class="info-value">${device.ip}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">MAC Address</div>
-                            <div class="info-value">${device.mac || 'N/A'}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Vendor</div>
-                            <div class="info-value">${device.vendor_local || device.vendor_hint || 'Unknown'}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">OS Guess</div>
-                            <div class="info-value">${device.os_guess || 'Unknown'}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Hostname</div>
-                            <div class="info-value">${device.hostname || 'N/A'}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Locally Administered</div>
-                            <div class="info-value">${device.locally_admin ? 'Yes' : 'No'}</div>
-                        </div>
+                // Device info in a line
+                const infoLine = document.getElementById('device-info-line');
+                infoLine.innerHTML = `
+                    <div class="device-name">${device.display_name || deviceIp}</div>
+                    <div class="info-item-inline">
+                        <div class="info-label-inline">IP Address</div>
+                        <div class="info-value-inline">${device.ip}</div>
                     </div>
-                    ${device.ports && device.ports.length > 0 ? `
-                        <div class="ports-section">
-                            <h3>Ports (${openPorts.length} open, ${filteredPorts.length} filtered)</h3>
-                            <div class="ports-grid">
-                                ${device.ports.map(port => `
-                                    <div class="port-item ${port.state}">
-                                        <div class="info-label">Port ${port.port}/${port.proto}</div>
-                                        <div class="info-value">${port.state}</div>
-                                        ${port.service && port.service.name ? `
-                                            <div class="info-label" style="margin-top: 4px;">Service: ${port.service.name}</div>
-                                        ` : ''}
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    ` : ''}
+                    <div class="info-item-inline">
+                        <div class="info-label-inline">MAC Address</div>
+                        <div class="info-value-inline">${device.mac || 'N/A'}</div>
+                    </div>
+                    <div class="info-item-inline">
+                        <div class="info-label-inline">Vendor</div>
+                        <div class="info-value-inline">${device.vendor_local || device.vendor_hint || 'Unknown'}</div>
+                    </div>
+                    <div class="info-item-inline">
+                        <div class="info-label-inline">OS</div>
+                        <div class="info-value-inline">${device.os_guess || 'Unknown'}</div>
+                    </div>
                 `;
+
+                // Port section - minimalistic
+                if (device.ports && device.ports.length > 0) {
+                    const portsSection = document.getElementById('ports-section');
+                    const portsList = document.getElementById('ports-list');
+                    portsSection.style.display = 'block';
+                    
+                    portsList.innerHTML = device.ports.map(port => {
+                        const service = port.service && port.service.name ? ` • ${port.service.name}` : '';
+                        return `
+                            <div class="port-badge ${port.state}">
+                                <span class="port-number">${port.port}/${port.proto}</span>
+                                ${service ? `<span class="port-service">${service}</span>` : ''}
+                            </div>
+                        `;
+                    }).join('');
+                }
             } catch (error) {
                 console.error('Error loading device info:', error);
-                document.getElementById('device-info').innerHTML = `
-                    <h2>Error</h2>
-                    <p>Failed to load device information: ${error.message}</p>
+                document.getElementById('device-info-line').innerHTML = `
+                    <div class="device-name">Error</div>
+                    <div class="info-value-inline">Failed to load: ${error.message}</div>
                 `;
             }
         }
@@ -345,13 +426,13 @@
                 if (result.success) {
                     isCapturing = true;
                     document.getElementById('status-indicator').classList.add('active');
-                    document.getElementById('status-text').textContent = 'Capturing traffic...';
+                    document.getElementById('status-text').textContent = 'Capturing...';
                     
                     // Start polling for traffic updates
-                    trafficInterval = setInterval(updateTraffic, 2000); // Update every 2 seconds
-                    updateTraffic(); // Initial update
+                    trafficInterval = setInterval(updateTraffic, 2000);
+                    updateTraffic();
                 } else {
-                    document.getElementById('status-text').textContent = 'Failed to start capture: ' + (result.error || 'Unknown error');
+                    document.getElementById('status-text').textContent = 'Failed: ' + (result.error || 'Unknown error');
                 }
             } catch (error) {
                 console.error('Error starting traffic capture:', error);
@@ -369,22 +450,31 @@
                     return;
                 }
 
-                // Update stats
-                document.getElementById('stat-packets').textContent = data.packets || 0;
-                document.getElementById('stat-bytes').textContent = formatBytes(data.bytes || 0);
-                document.getElementById('stat-upload').textContent = formatBps(data.upload_bps || 0);
-                document.getElementById('stat-download').textContent = formatBps(data.download_bps || 0);
+                // Update speed section (small area)
+                const uploadFormatted = formatBps(data.upload_bps || 0);
+                const downloadFormatted = formatBps(data.download_bps || 0);
+                const uploadParts = uploadFormatted.split(' ');
+                const downloadParts = downloadFormatted.split(' ');
+                
+                document.getElementById('speed-upload').textContent = uploadParts[0];
+                document.getElementById('speed-upload-unit').textContent = uploadParts[1] || 'bps';
+                document.getElementById('speed-download').textContent = downloadParts[0];
+                document.getElementById('speed-download-unit').textContent = downloadParts[1] || 'bps';
 
-                // Update log
+                // Update scanning stats
+                document.getElementById('scan-packets').textContent = data.packets || 0;
+                document.getElementById('scan-bytes').textContent = formatBytes(data.bytes || 0);
+
+                // Update traffic log (main scanning area)
                 const logContainer = document.getElementById('traffic-log');
                 if (data.recent_packets && data.recent_packets.length > 0) {
                     if (logContainer.querySelector('.empty-traffic')) {
                         logContainer.innerHTML = '';
                     }
                     
-                    // Add new log entries (limit to last 50)
+                    // Add new log entries (limit to last 100)
                     const existingEntries = logContainer.querySelectorAll('.log-entry').length;
-                    if (existingEntries > 50) {
+                    if (existingEntries > 100) {
                         logContainer.removeChild(logContainer.firstChild);
                     }
                     
@@ -393,11 +483,12 @@
                         entry.className = 'log-entry';
                         const time = new Date(packet.timestamp * 1000).toLocaleTimeString();
                         const direction = packet.direction === 'upload' ? 'upload' : 'download';
-                        const color = direction === 'upload' ? 'log-upload' : 'log-download';
+                        const colorClass = direction === 'upload' ? 'log-upload' : 'log-download';
                         entry.innerHTML = `
                             <span class="log-time">${time}</span>
-                            <span class="${color}">${direction.toUpperCase()}</span>
-                            ${packet.size} bytes (${packet.protocol || 'unknown'})
+                            <span class="log-direction ${colorClass}">${direction.toUpperCase()}</span>
+                            <span class="log-details">${packet.size} bytes</span>
+                            <span class="log-protocol">${packet.protocol || 'unknown'}</span>
                         `;
                         logContainer.appendChild(entry);
                     });
@@ -411,7 +502,7 @@
         }
 
         function formatBytes(bytes) {
-            if (bytes === 0) return '0';
+            if (bytes === 0) return '0 B';
             const k = 1024;
             const sizes = ['B', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -419,7 +510,7 @@
         }
 
         function formatBps(bps) {
-            if (bps === 0) return '0';
+            if (bps === 0) return '0 bps';
             const k = 1000;
             const sizes = ['bps', 'Kbps', 'Mbps', 'Gbps'];
             const i = Math.floor(Math.log(bps) / Math.log(k));
@@ -444,7 +535,7 @@
             
             isCapturing = false;
             document.getElementById('status-indicator').classList.remove('active');
-            document.getElementById('status-text').textContent = 'Capture stopped';
+            document.getElementById('status-text').textContent = 'Stopped';
         }
 
         // Cleanup on page unload
@@ -456,4 +547,3 @@
     </script>
 </body>
 </html>
-

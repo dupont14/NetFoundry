@@ -68,7 +68,7 @@
             transition: all 0.3s;
         }
         .device-icon {
-            padding: 12px;
+            padding: 16px;
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s;
@@ -76,9 +76,18 @@
             align-items: center;
             justify-content: center;
         }
-        .device-icon.router { background: #2563eb; border: 2px solid #60a5fa; }
-        .device-icon.device { background: #3b82f6; border: 2px solid #93c5fd; }
+        .device-icon.router { 
+            background: #f59e0b; 
+            border: 3px solid #fbbf24;
+            padding: 24px;
+        }
+        .device-icon.device { 
+            background: #3b82f6; 
+            border: 2px solid #93c5fd;
+            padding: 18px;
+        }
         .device-icon:hover { transform: scale(1.25); box-shadow: 0 10px 40px rgba(59, 130, 246, 0.5); }
+        .device-icon.router:hover { box-shadow: 0 10px 40px rgba(245, 158, 11, 0.5); }
         .device-icon:hover .pulse { display: block; }
         .pulse {
             display: none;
@@ -87,6 +96,9 @@
             border-radius: 50%;
             border: 2px solid #93c5fd;
             animation: pulse 1s ease-out infinite;
+        }
+        .device-icon.router .pulse {
+            border-color: #fbbf24;
         }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.75; } 100% { transform: scale(1.5); opacity: 0; } }
         .device-label {
@@ -108,7 +120,11 @@
             opacity: 0;
             transition: opacity 0.3s;
             min-width: 240px;
-            margin-top: 48px;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 16px;
+            z-index: 1000;
         }
         .tooltip.visible { opacity: 1; }
         .tooltip-content {
@@ -117,6 +133,19 @@
             border-radius: 8px;
             padding: 12px;
             box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+            position: relative;
+        }
+        .tooltip-content::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #3b82f6;
         }
         .tooltip-title { font-weight: 600; margin-bottom: 8px; font-size: 14px; }
         .tooltip-row {
@@ -150,7 +179,7 @@
             align-items: center;
             justify-content: center;
         }
-        .legend-icon.router { background: #2563eb; border: 2px solid #60a5fa; }
+        .legend-icon.router { background: #f59e0b; border: 2px solid #fbbf24; }
         .legend-icon.device { background: #3b82f6; border: 2px solid #93c5fd; }
         .legend-line {
             width: 32px;
@@ -166,7 +195,8 @@
         }
         .empty-icon { width: 64px; height: 64px; margin: 0 auto 16px; opacity: 0.5; }
         svg { width: 16px; height: 16px; fill: currentColor; }
-        .device-icon svg { width: 24px; height: 24px; }
+        .device-icon.device svg { width: 28px; height: 28px; }
+        .device-icon.router svg { width: 40px; height: 40px; }
         .legend-icon svg { width: 16px; height: 16px; }
         line { stroke: rgba(59, 130, 246, 0.3); stroke-width: 2; }
         line.active { stroke: rgba(59, 130, 246, 1); stroke-dasharray: none; }
@@ -268,13 +298,28 @@
             return icons[type] || icons.device;
         }
 
-        function getDevicePosition(index, total) {
-            if (index === 0) return { x: 50, y: 50 };
-            const radius = 35;
-            const angle = ((index - 1) / (total - 1)) * 2 * Math.PI - Math.PI / 2;
-            const x = 50 + radius * Math.cos(angle);
-            const y = 50 + radius * Math.sin(angle);
-            return { x, y };
+        function getTreePositions(tree, positions = {}, level = 0, x = 50, y = 15, spacing = 25) {
+            if (!tree) return positions;
+            
+            // Store position for this node
+            positions[tree.ip] = { x, y, level };
+            
+            // If this node has children, position them below
+            if (tree.children && tree.children.length > 0) {
+                const childCount = tree.children.length;
+                // Increase spacing significantly to prevent overlap with larger icons
+                const adjustedSpacing = Math.max(spacing, 100 / Math.max(childCount, 1));
+                const totalWidth = (childCount - 1) * adjustedSpacing;
+                const startX = x - totalWidth / 2;
+                
+                tree.children.forEach((child, index) => {
+                    const childX = startX + index * adjustedSpacing;
+                    const childY = y + 25; // 25% down for each level (more vertical spacing)
+                    getTreePositions(child, positions, level + 1, childX, childY, adjustedSpacing);
+                });
+            }
+            
+            return positions;
         }
 
         function getOpenPorts(device) {
@@ -282,17 +327,21 @@
             return device.ports.filter(p => p.state === 'open').map(p => p.port);
         }
 
-        function flattenTree(tree, result = []) {
-            if (Array.isArray(tree)) {
-                tree.forEach(item => flattenTree(item, result));
-            } else if (tree && typeof tree === 'object') {
-                result.push(tree);
-                if (tree.children && Array.isArray(tree.children)) {
-                    tree.children.forEach(child => flattenTree(child, result));
-                }
-            }
-            return result;
+        function buildTreeFromArray(deviceList) {
+            // Find router (usually .1 or first device)
+            const router = deviceList.find(d => getDeviceType(d) === 'router') || deviceList[0];
+            if (!router) return null;
+            
+            // Get all other devices as children
+            const children = deviceList.filter(d => d.ip !== router.ip);
+            
+            return {
+                ...router,
+                children: children
+            };
         }
+
+        let deviceTree = null;
 
         async function loadDevices() {
             const btn = document.getElementById('refresh-btn');
@@ -302,15 +351,29 @@
             try {
                 const response = await fetch('/network-devices.json');
                 const data = await response.json();
+                
                 // Handle both array and tree formats
-                const deviceList = Array.isArray(data) ? data : flattenTree(data);
-                devices = deviceList.sort((a, b) => {
-                    const aIsRouter = getDeviceType(a) === 'router';
-                    const bIsRouter = getDeviceType(b) === 'router';
-                    if (aIsRouter && !bIsRouter) return -1;
-                    if (!aIsRouter && bIsRouter) return 1;
-                    return 0;
-                });
+                if (Array.isArray(data)) {
+                    deviceTree = buildTreeFromArray(data);
+                } else if (data && typeof data === 'object') {
+                    deviceTree = data;
+                } else {
+                    deviceTree = null;
+                }
+                
+                // Flatten for stats
+                function countDevices(node) {
+                    if (!node) return 0;
+                    let count = 1;
+                    if (node.children) {
+                        node.children.forEach(child => count += countDevices(child));
+                    }
+                    return count;
+                }
+                devices = deviceTree ? [deviceTree] : [];
+                const totalDevices = deviceTree ? countDevices(deviceTree) : 0;
+                document.getElementById('device-count').textContent = totalDevices;
+                
                 renderMap();
                 updateStats();
             } catch (error) {
@@ -323,9 +386,18 @@
         }
 
         function updateStats() {
-            document.getElementById('device-count').textContent = devices.length;
+            function countDevices(node) {
+                if (!node) return 0;
+                let count = 1;
+                if (node.children) {
+                    node.children.forEach(child => count += countDevices(child));
+                }
+                return count;
+            }
+            const totalDevices = deviceTree ? countDevices(deviceTree) : 0;
+            document.getElementById('device-count').textContent = totalDevices;
             document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
-            document.getElementById('empty-state').style.display = devices.length === 0 ? 'block' : 'none';
+            document.getElementById('empty-state').style.display = !deviceTree ? 'block' : 'none';
         }
 
         function renderMap() {
@@ -334,27 +406,43 @@
             container.innerHTML = '';
             svg.innerHTML = '';
 
-            if (devices.length === 0) return;
+            if (!deviceTree) return;
 
-            const routerPos = { x: 50, y: 50 };
-
-            // Draw connection lines
-            devices.forEach((device, index) => {
-                if (index === 0) return;
-                const pos = getDevicePosition(index, devices.length);
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', routerPos.x);
-                line.setAttribute('y1', routerPos.y);
-                line.setAttribute('x2', pos.x);
-                line.setAttribute('y2', pos.y);
-                line.classList.add('inactive');
-                line.id = `line-${device.ip}`;
-                svg.appendChild(line);
-            });
+            // Calculate positions for all devices in tree
+            const positions = getTreePositions(deviceTree);
+            
+            // Draw connection lines (from parent to children)
+            function drawConnections(node) {
+                if (!node) return;
+                
+                const parentPos = positions[node.ip];
+                if (!parentPos) return;
+                
+                if (node.children && node.children.length > 0) {
+                    node.children.forEach(child => {
+                        const childPos = positions[child.ip];
+                        if (childPos) {
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', parentPos.x);
+                            line.setAttribute('y1', parentPos.y);
+                            line.setAttribute('x2', childPos.x);
+                            line.setAttribute('y2', childPos.y);
+                            line.classList.add('inactive');
+                            line.id = `line-${child.ip}`;
+                            svg.appendChild(line);
+                        }
+                        drawConnections(child);
+                    });
+                }
+            }
+            
+            drawConnections(deviceTree);
 
             // Draw device nodes
-            devices.forEach((device, index) => {
-                const pos = getDevicePosition(index, devices.length);
+            function renderDeviceNode(device) {
+                const pos = positions[device.ip];
+                if (!pos) return;
+                
                 const isRouter = getDeviceType(device) === 'router';
                 const openPorts = getOpenPorts(device);
 
@@ -421,7 +509,14 @@
                 });
 
                 container.appendChild(node);
-            });
+                
+                // Recursively render children
+                if (device.children && device.children.length > 0) {
+                    device.children.forEach(child => renderDeviceNode(child));
+                }
+            }
+            
+            renderDeviceNode(deviceTree);
         }
 
         document.getElementById('refresh-btn').addEventListener('click', loadDevices);
