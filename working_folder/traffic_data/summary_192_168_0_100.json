@@ -1,0 +1,15 @@
+{
+  "ip": "192.168.0.100",
+  "packets": 5,
+  "bytes": 266,
+  "upload_bps": 413.4217768530596,
+  "download_bps": 0.0,
+  "protocols": {
+    "raw": "\n===================================================================\nProtocol Hierarchy Statistics\nFilter: \n\neth                                      frames:5 bytes:326\n  ip                                     frames:4 bytes:266\n    igmp                                 frames:3 bytes:180\n    udp                                  frames:1 bytes:86\n      data                               frames:1 bytes:86\n  arp                                    frames:1 bytes:60\n===================================================================\n"
+  },
+  "conversations": [
+    "================================================================================\nUDP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n192.168.0.100:57621        <-> 192.168.0.255:57621              0 0 bytes         1 86 bytes        1 86 bytes      2.535737769         0.0000\n================================================================================\n================================================================================\nTCP Conversations\nFilter:<No Filter>\n                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |\n                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |\n================================================================================\n"
+  ],
+  "http_requests": [],
+  "tls_sni": []
+}
