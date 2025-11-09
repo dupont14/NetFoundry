@@ -293,3 +293,41 @@ Set NETWORK_INTERFACE environment variable to specify interface (default: en0)
 [+] Loaded 6 traffic summaries from all_summaries.json
 [+] Loaded 6 traffic summaries from all_summaries.json
 [+] Loaded 6 traffic summaries from all_summaries.json
+Traceback (most recent call last):
+  File "/Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/server.py", line 1022, in run_startup_scan
+    handler = NetworkRequestHandler(BytesIO(b''), ('127.0.0.1', 8000), None)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 764, in __init__
+    self.setup()
+    ~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 816, in setup
+    self.rfile = self.connection.makefile('rb', self.rbufsize)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: '_io.BytesIO' object has no attribute 'makefile'
+[+] Running initial device scan at startup...
+[!] Error during startup scan: '_io.BytesIO' object has no attribute 'makefile'
+Server running on http://localhost:8000
+Note: Traffic capture requires sudo privileges for tshark
+Set NETWORK_INTERFACE environment variable to specify interface (default: en0)
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json
+Traceback (most recent call last):
+  File "/Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/server.py", line 1022, in run_startup_scan
+    handler = NetworkRequestHandler(BytesIO(b''), ('127.0.0.1', 8000), None)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 764, in __init__
+    self.setup()
+    ~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.0_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 816, in setup
+    self.rfile = self.connection.makefile('rb', self.rbufsize)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: '_io.BytesIO' object has no attribute 'makefile'
+[+] Running initial device scan at startup...
+[!] Error during startup scan: '_io.BytesIO' object has no attribute 'makefile'
+Server running on http://localhost:8000
+Note: Traffic capture requires sudo privileges for tshark
+Set NETWORK_INTERFACE environment variable to specify interface (default: en0)
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json
+[+] Loaded 6 traffic summaries from all_summaries.json

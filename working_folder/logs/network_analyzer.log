@@ -1551,3 +1551,39 @@ Capturing on 'Wi-Fi: en0'
 [+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
 Capturing on 'Wi-Fi: en0'
 22 packets captured
+Capturing on 'Wi-Fi: en0'
+8 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.101, 192.168.0.100, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 4 packets, 219.83↑ 338.54↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 1 packets, 1120000000.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+5 packets captured
+[+] Analyzing 6 devices: 192.168.0.1, 192.168.0.101, 192.168.0.100, 192.168.0.105, 192.168.0.104, 192.168.0.0
+[+] Capturing traffic for all devices for 10s...
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 0.00↑ 129560.29↓ bps
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[✓] 192.168.0.100: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 0 packets, 0.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[✓] 192.168.0.0: 0 packets, 0.00↑ 0.00↓ bps
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+Capturing on 'Wi-Fi: en0'
+0 packets captured
