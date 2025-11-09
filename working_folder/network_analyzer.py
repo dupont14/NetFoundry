@@ -142,16 +142,43 @@ def analyze_all_devices(interface, devices_file, duration, output_dir):
     # Create a single pcap file for all devices
     all_devices_pcap = output_dir / "capture_all_devices.pcap"
     
-    # Build filter for all devices: "host 192.168.0.1 or host 192.168.0.100 or ..."
-    host_filter = " or ".join([f"host {ip}" for ip in device_ips])
+    # Build filter for all devices
+    # Use subnet-based filter to capture all traffic on the network, then filter by device during analysis
+    # This is more reliable than filtering by individual hosts
+    first_ip_parts = device_ips[0].split('.')
+    if len(first_ip_parts) == 4:
+        # Use subnet filter to capture all traffic on the local network
+        subnet_base = f"{first_ip_parts[0]}.{first_ip_parts[1]}.{first_ip_parts[2]}"
+        host_filter = f"net {subnet_base}.0 mask 255.255.255.0"
+        print(f"[+] Using subnet filter to capture all traffic on {subnet_base}.0/24")
+    else:
+        # Fallback to individual host filters if IP format is unexpected
+        host_filter = " or ".join([f"host {ip}" for ip in device_ips])
+        print(f"[+] Using individual host filters for {len(device_ips)} devices")
     
     summaries = {}
     
     try:
         # Capture traffic for all devices at once
         print(f"[+] Capturing traffic for all devices for {duration}s...")
+        print(f"[+] Filter: {host_filter}")
         cmd = f"sudo tshark -i {interface} -f '{host_filter}' -a duration:{duration} -w {all_devices_pcap}"
-        subprocess.run(cmd, shell=True, check=True, timeout=duration+5)
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=duration+10)
+        
+        if result.returncode != 0:
+            print(f"[!] Warning: tshark capture returned non-zero exit code: {result.returncode}")
+            print(f"[!] stderr: {result.stderr}")
+        
+        # Check if pcap file was created and has content
+        if not all_devices_pcap.exists():
+            print(f"[✗] Error: Capture file was not created!")
+            raise Exception("Capture file not created")
+        
+        file_size = all_devices_pcap.stat().st_size
+        print(f"[+] Capture file size: {file_size} bytes")
+        
+        if file_size == 0:
+            print(f"[!] Warning: Capture file is empty - no traffic captured")
         
         # Analyze captured traffic for each device
         for device in devices:
@@ -165,10 +192,30 @@ def analyze_all_devices(interface, devices_file, duration, output_dir):
                 # Extract packets for this specific device from the combined pcap
                 device_pcap = output_dir / f"capture_{ip.replace('.', '_')}.pcap"
                 extract_cmd = f"tshark -r {all_devices_pcap} -w {device_pcap} -Y 'ip.addr == {ip}'"
-                subprocess.run(extract_cmd, shell=True, capture_output=True, timeout=5)
+                result = subprocess.run(extract_cmd, shell=True, capture_output=True, timeout=10, text=True)
                 
-                # Analyze this device's traffic
-                summary = analyze_pcap(str(device_pcap), ip)
+                # Check if extraction was successful and file exists
+                if result.returncode != 0:
+                    print(f"[!] Warning: Extraction failed for {ip}: {result.stderr}")
+                
+                # Analyze this device's traffic (even if extraction had issues, try to analyze)
+                if device_pcap.exists() and device_pcap.stat().st_size > 0:
+                    summary = analyze_pcap(str(device_pcap), ip)
+                else:
+                    # If no pcap file or empty, create empty summary
+                    print(f"[!] No traffic captured for {ip} (file missing or empty)")
+                    summary = {
+                        "ip": ip,
+                        "packets": 0,
+                        "bytes": 0,
+                        "upload_bps": 0,
+                        "download_bps": 0,
+                        "protocols": {},
+                        "conversations": [],
+                        "http_requests": [],
+                        "tls_sni": []
+                    }
+                
                 summaries[ip] = summary
                 
                 # Save individual summary
@@ -176,10 +223,25 @@ def analyze_all_devices(interface, devices_file, duration, output_dir):
                 with open(summary_file, 'w') as f:
                     json.dump(summary, f, indent=2)
                 
-                print(f"[✓] {ip}: {summary['packets']} packets, {summary['upload_bps']:.2f}↑ {summary['download_bps']:.2f}↓ bps")
+                if summary['packets'] > 0:
+                    print(f"[✓] {ip}: {summary['packets']} packets, {summary['bytes']} bytes, {summary['upload_bps']:.2f}↑ {summary['download_bps']:.2f}↓ bps")
+                else:
+                    print(f"[○] {ip}: No traffic detected")
                 
+            except subprocess.TimeoutExpired:
+                print(f"[✗] Timeout extracting traffic for {ip}")
+                summaries[ip] = {
+                    "ip": ip,
+                    "error": "extraction_timeout",
+                    "packets": 0,
+                    "bytes": 0,
+                    "upload_bps": 0,
+                    "download_bps": 0
+                }
             except Exception as e:
                 print(f"[✗] Error analyzing {ip}: {e}")
+                import traceback
+                traceback.print_exc()
                 summaries[ip] = {
                     "ip": ip,
                     "error": str(e),

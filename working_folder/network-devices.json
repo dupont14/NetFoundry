@@ -101,6 +101,30 @@
     "display_name": "192.168.0.1"
   },
   {
+    "ip": "192.168.0.102",
+    "mac": "60:e3:2b:cf:fd:0f",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "IntelCor"
+  },
+  {
+    "ip": "192.168.0.107",
+    "mac": "7c:2a:31:05:31:4c",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "IntelCor"
+  },
+  {
     "ip": "192.168.0.105",
     "mac": "ac:12:03:6f:8f:f1",
     "vendor_hint": "Intel Corporate",
@@ -199,30 +223,6 @@
         }
       }
     ],
-    "display_name": "IntelCor"
-  },
-  {
-    "ip": "192.168.0.102",
-    "mac": "60:e3:2b:cf:fd:0f",
-    "vendor_hint": "Intel Corporate",
-    "locally_admin": false,
-    "vendor_local": "IntelCor",
-    "vendor_api": null,
-    "hostname": null,
-    "os_guess": null,
-    "ports": [],
-    "display_name": "IntelCor"
-  },
-  {
-    "ip": "192.168.0.107",
-    "mac": "7c:2a:31:05:31:4c",
-    "vendor_hint": "Intel Corporate",
-    "locally_admin": false,
-    "vendor_local": "IntelCor",
-    "vendor_api": null,
-    "hostname": null,
-    "os_guess": null,
-    "ports": [],
     "display_name": "IntelCor"
   },
   {

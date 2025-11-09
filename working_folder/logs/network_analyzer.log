@@ -2096,3 +2096,399 @@ Capturing on 'Wi-Fi: en0'
 [+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
 Capturing on 'Wi-Fi: en0'
 7 packets captured
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 400 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[○] 192.168.0.1: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[○] 192.168.0.101: No traffic detected
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 22192 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 72 packets, 16217 bytes, 5582.87↑ 10795.10↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 79 packets, 18894 bytes, 10804.77↑ 4468.71↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 17376 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 17 packets, 11777 bytes, 5244.08↑ 5928.05↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[✓] 192.168.0.105: 1 packets, 183 bytes, 1464000000.00↑ 0.00↓ bps
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 20 packets, 15923 bytes, 9858.18↑ 5242.52↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 16712 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 13 packets, 11466 bytes, 5286.82↑ 5678.93↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 16 packets, 15612 bytes, 9644.04↑ 5286.82↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 17560 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 21 packets, 12123 bytes, 5394.89↑ 6436.20↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 24 packets, 16269 bytes, 10482.37↑ 5394.89↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 19348 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 17 packets, 11757 bytes, 6052.51↑ 6820.02↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 22 packets, 16612 bytes, 11461.57↑ 5716.31↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 4 packets, 661 bytes, 834.89↑ 488.52↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2612 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 18 packets, 1379 bytes, 0.00↑ 1387.26↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 18 packets, 1379 bytes, 1387.26↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 6196 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 25 packets, 1941 bytes, 0.00↑ 1799.46↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 27 packets, 3285 bytes, 3045.45↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 7 packets, 1946 bytes, 587.59↑ 1311.82↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2524 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 1235 bytes, 0.00↑ 1149.91↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 15 packets, 1235 bytes, 1149.91↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2932 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 19 packets, 1485 bytes, 0.00↑ 1676.81↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 19 packets, 1485 bytes, 1676.81↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[✓] 192.168.0.104: 1 packets, 137 bytes, 1096000000.00↑ 0.00↓ bps
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 1164 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 4 packets, 321 bytes, 0.00↑ 289.02↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 4 packets, 321 bytes, 289.02↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2264 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 13 packets, 1047 bytes, 0.00↑ 1548.39↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 13 packets, 1047 bytes, 1548.39↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2180 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 15 packets, 1124 bytes, 55.80↑ 1198.50↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 14 packets, 1074 bytes, 1198.50↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 1004 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 2 packets, 156 bytes, 0.00↑ 315.67↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 2 packets, 156 bytes, 315.67↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2992 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 20 packets, 1546 bytes, 0.00↑ 1449.38↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 20 packets, 1546 bytes, 1449.38↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 1856 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 10 packets, 819 bytes, 0.00↑ 1068.27↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 10 packets, 819 bytes, 1068.27↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 2404 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 12 packets, 926 bytes, 0.00↑ 1297.18↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 13 packets, 1265 bytes, 1570.43↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json
+[+] Analyzing 8 devices: 192.168.0.1, 192.168.0.102, 192.168.0.107, 192.168.0.105, 192.168.0.100, 192.168.0.101, 192.168.0.104, 192.168.0.0
+[+] Using subnet filter to capture all traffic on 192.168.0.0/24
+[+] Capturing traffic for all devices for 10s...
+[+] Filter: net 192.168.0.0 mask 255.255.255.0
+[+] Capture file size: 1852 bytes
+[*] Analyzing device: 192.168.0.1 (192.168.0.1)
+[✓] 192.168.0.1: 11 packets, 848 bytes, 62.50↑ 997.47↓ bps
+[*] Analyzing device: IntelCor (192.168.0.102)
+[○] 192.168.0.102: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.107)
+[○] 192.168.0.107: No traffic detected
+[*] Analyzing device: IntelCor (192.168.0.105)
+[○] 192.168.0.105: No traffic detected
+[*] Analyzing device: Micro-St (192.168.0.100)
+[○] 192.168.0.100: No traffic detected
+[*] Analyzing device: HewlettP (192.168.0.101)
+[✓] 192.168.0.101: 10 packets, 798 bytes, 997.47↑ 0.00↓ bps
+[*] Analyzing device: 192.168.0.104 (192.168.0.104)
+[○] 192.168.0.104: No traffic detected
+[*] Analyzing device: Broadcast (192.168.0.0)
+[○] 192.168.0.0: No traffic detected
+[+] All summaries saved to /Users/jeremyburke/HackUMass2025/NetFoundry/working_folder/traffic_data/all_summaries.json

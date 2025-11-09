@@ -25195,3 +25195,27 @@ KeyboardInterrupt
 [*] Reusing existing data for 192.168.0.104 (quick mode)
 [*] Reusing existing data for 192.168.0.0 (quick mode)
 [+] Wrote devices.json
+[*] Running ARP scan to find devices...
+[*] Found 4 devices in ARP table
+[*] Devices in ARP table:
+    - 192.168.0.1 (8c:90:2d:2b:89:cb)
+    - 192.168.0.102 (60:e3:2b:cf:fd:0f)
+    - 192.168.0.107 (7c:2a:31:05:31:4c)
+    - 192.168.0.105 (ac:12:03:6f:8f:f1)
+[+] Using saved target router IP: 192.168.0.1
+[+] Target router: 192.168.0.1
+[+] Scanning network: 192.168.0.0/24
+[*] Found 4 devices in ARP table on network (192.168.0.x)
+[+] Adding existing device 192.168.0.100 from previous scan
+[+] Adding existing device 192.168.0.101 from previous scan
+[+] Adding existing device 192.168.0.104 from previous scan
+[+] Adding existing device 192.168.0.0 from previous scan
+[*] Reusing existing data for 192.168.0.1 (quick mode)
+[*] Reusing existing data for 192.168.0.102 (quick mode)
+[*] Reusing existing data for 192.168.0.107 (quick mode)
+[*] Reusing existing data for 192.168.0.105 (quick mode)
+[*] Reusing existing data for 192.168.0.100 (quick mode)
+[*] Reusing existing data for 192.168.0.101 (quick mode)
+[*] Reusing existing data for 192.168.0.104 (quick mode)
+[*] Reusing existing data for 192.168.0.0 (quick mode)
+[+] Wrote devices.json
