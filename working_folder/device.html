@@ -172,6 +172,9 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+        .speed-label::after {
+            content: " Speed";
+        }
         .speed-value {
             font-size: 16px;
             font-weight: 600;
@@ -334,6 +337,14 @@
                     <div class="scan-stat-label">Total Bytes</div>
                     <div class="scan-stat-value" id="scan-bytes">0 B</div>
                 </div>
+                <div class="scan-stat">
+                    <div class="scan-stat-label">Upload Total</div>
+                    <div class="scan-stat-value" id="scan-upload-total">0 B</div>
+                </div>
+                <div class="scan-stat">
+                    <div class="scan-stat-label">Download Total</div>
+                    <div class="scan-stat-value" id="scan-download-total">0 B</div>
+                </div>
             </div>
             <div class="traffic-log" id="traffic-log">
                 <div class="empty-traffic">Waiting for traffic data...</div>
@@ -353,6 +364,100 @@
         let trafficInterval = null;
         let isCapturing = false;
 
+        function parseProtocolHierarchy(rawText) {
+            if (!rawText) return [];
+            const lines = rawText.split('\n');
+            const protocols = [];
+            const skipProtocols = ['eth', 'ip', 'ipv6', 'arp', 'icmp']; // Skip low-level protocols
+            
+            for (const line of lines) {
+                const match = line.match(/(\w+)\s+frames:(\d+)\s+bytes:(\d+)/);
+                if (match) {
+                    const protoName = match[1].toLowerCase();
+                    // Only include meaningful application-level protocols
+                    if (!skipProtocols.includes(protoName) && parseInt(match[2]) > 0) {
+                        protocols.push({
+                            name: match[1],
+                            frames: parseInt(match[2]),
+                            bytes: parseInt(match[3])
+                        });
+                    }
+                }
+            }
+            // Sort by bytes (descending) to show most significant protocols first
+            return protocols.sort((a, b) => b.bytes - a.bytes);
+        }
+
+        function parseConversations(conversationsText, deviceIp) {
+            if (!conversationsText || !Array.isArray(conversationsText)) return { conversations: [], uploadBytes: 0, downloadBytes: 0 };
+            
+            const parsed = [];
+            let totalUploadBytes = 0;
+            let totalDownloadBytes = 0;
+            
+            for (const text of conversationsText) {
+                const lines = text.split('\n');
+                let currentType = null;
+                
+                for (const line of lines) {
+                    if (line.includes('UDP Conversations')) {
+                        currentType = 'UDP';
+                    } else if (line.includes('TCP Conversations')) {
+                        currentType = 'TCP';
+                    } else if (line.trim() && !line.includes('===') && !line.includes('Filter:') && 
+                               !line.includes('Frames') && !line.includes('Bytes') && 
+                               !line.includes('<-') && !line.includes('->') && currentType) {
+                        // Parse conversation line: "192.168.0.100:64135 <-> 192.168.0.101:22  38 3,724 bytes  38 2,280 bytes  76 6,004 bytes"
+                        const match = line.match(/([\d.]+:\d+)\s+<->\s+([\d.]+:\d+)\s+(\d+)\s+([\d,]+)\s+bytes\s+(\d+)\s+([\d,]+)\s+bytes/);
+                        if (match) {
+                            const src = match[1];
+                            const dst = match[2];
+                            const uploadFrames = parseInt(match[3]);
+                            const uploadBytes = parseInt(match[4].replace(/,/g, ''));
+                            const downloadFrames = parseInt(match[5]);
+                            const downloadBytes = parseInt(match[6].replace(/,/g, ''));
+                            
+                            // Determine if this device is the source or destination
+                            const srcIp = src.split(':')[0];
+                            const dstIp = dst.split(':')[0];
+                            
+                            if (srcIp === deviceIp) {
+                                // Device is uploading
+                                totalUploadBytes += uploadBytes;
+                                totalDownloadBytes += downloadBytes;
+                                parsed.push({
+                                    type: currentType,
+                                    source: src,
+                                    destination: dst,
+                                    uploadFrames: uploadFrames,
+                                    uploadBytes: uploadBytes,
+                                    downloadFrames: downloadFrames,
+                                    downloadBytes: downloadBytes,
+                                    direction: 'outbound'
+                                });
+                            } else if (dstIp === deviceIp) {
+                                // Device is downloading (reverse the bytes)
+                                totalUploadBytes += downloadBytes;
+                                totalDownloadBytes += uploadBytes;
+                                parsed.push({
+                                    type: currentType,
+                                    source: src,
+                                    destination: dst,
+                                    uploadFrames: downloadFrames,
+                                    uploadBytes: downloadBytes,
+                                    downloadFrames: uploadFrames,
+                                    downloadBytes: uploadBytes,
+                                    direction: 'inbound'
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            
+            return { conversations: parsed, uploadBytes: totalUploadBytes, downloadBytes: totalDownloadBytes };
+        }
+
         async function loadDeviceInfo() {
             try {
                 const response = await fetch('/api/device?ip=' + encodeURIComponent(deviceIp));
@@ -364,6 +469,17 @@
                     `;
                     return;
                 }
+                
+                // Debug: log device data to see what we're getting
+                console.log('Device data loaded:', {
+                    ip: device.ip,
+                    packets: device.packets,
+                    bytes: device.bytes,
+                    upload_bps: device.upload_bps,
+                    download_bps: device.download_bps,
+                    traffic_stats: device.traffic_stats,
+                    hasConversations: !!device.conversations
+                });
 
                 // Device info in a line
                 const infoLine = document.getElementById('device-info-line');
@@ -402,6 +518,166 @@
                             </div>
                         `;
                     }).join('');
+                }
+
+                // Parse conversations to get upload/download totals
+                let uploadBytesTotal = 0;
+                let downloadBytesTotal = 0;
+                
+                if (device.conversations) {
+                    const convData = parseConversations(device.conversations, deviceIp);
+                    uploadBytesTotal = convData.uploadBytes;
+                    downloadBytesTotal = convData.downloadBytes;
+                }
+                
+                // Load historical traffic stats from summaries (use direct properties first, fallback to traffic_stats)
+                // Convert to numbers and handle 0 values properly (0 is falsy in JS, so we need explicit checks)
+                const packets = (device.packets !== undefined && device.packets !== null) ? Number(device.packets) : 0;
+                const bytes = (device.bytes !== undefined && device.bytes !== null) ? Number(device.bytes) : 0;
+                const uploadBps = (device.upload_bps !== undefined && device.upload_bps !== null) ? Number(device.upload_bps) : 0;
+                const downloadBps = (device.download_bps !== undefined && device.download_bps !== null) ? Number(device.download_bps) : 0;
+                
+                // Debug: log extracted values
+                console.log('Extracted values:', { 
+                    packets, 
+                    bytes, 
+                    uploadBps, 
+                    downloadBps,
+                    rawPackets: device.packets,
+                    rawBytes: device.bytes,
+                    rawUploadBps: device.upload_bps,
+                    rawDownloadBps: device.download_bps
+                });
+                
+                // Display packets and bytes
+                document.getElementById('scan-packets').textContent = packets.toLocaleString();
+                document.getElementById('scan-bytes').textContent = formatBytes(bytes);
+                
+                // Display upload/download totals
+                document.getElementById('scan-upload-total').textContent = formatBytes(uploadBytesTotal || 0);
+                document.getElementById('scan-download-total').textContent = formatBytes(downloadBytesTotal || 0);
+                
+                // Update speed section with upload/download SPEEDS (bps)
+                console.log('Speed values before formatting:', { uploadBps, downloadBps });
+                const uploadSpeedFormatted = formatBps(uploadBps);
+                const downloadSpeedFormatted = formatBps(downloadBps);
+                console.log('Speed values after formatting:', { uploadSpeedFormatted, downloadSpeedFormatted });
+                const uploadSpeedParts = uploadSpeedFormatted.split(' ');
+                const downloadSpeedParts = downloadSpeedFormatted.split(' ');
+                
+                document.getElementById('speed-upload').textContent = uploadSpeedParts[0];
+                document.getElementById('speed-upload-unit').textContent = uploadSpeedParts[1] || 'bps';
+                document.getElementById('speed-download').textContent = downloadSpeedParts[0];
+                document.getElementById('speed-download-unit').textContent = downloadSpeedParts[1] || 'bps';
+                
+                console.log('Setting speed elements:', {
+                    uploadElement: document.getElementById('speed-upload'),
+                    downloadElement: document.getElementById('speed-download'),
+                    uploadValue: uploadSpeedParts[0],
+                    downloadValue: downloadSpeedParts[0]
+                });
+
+                // Display protocol information
+                if (device.protocols && device.protocols.raw) {
+                    const protocols = parseProtocolHierarchy(device.protocols.raw);
+                    if (protocols.length > 0) {
+                        const logContainer = document.getElementById('traffic-log');
+                        logContainer.innerHTML = '';
+                        
+                        // Add protocol section (only if we have meaningful protocols)
+                        if (protocols.length > 0) {
+                            const protocolHeader = document.createElement('div');
+                            protocolHeader.className = 'log-entry';
+                            protocolHeader.style.fontWeight = 'bold';
+                            protocolHeader.style.borderBottom = '2px solid #334155';
+                            protocolHeader.innerHTML = '<span style="color: #60a5fa;">Protocols Used</span>';
+                            logContainer.appendChild(protocolHeader);
+                            
+                            protocols.forEach(proto => {
+                                const entry = document.createElement('div');
+                                entry.className = 'log-entry';
+                                entry.innerHTML = `
+                                    <span class="log-time">${proto.frames}</span>
+                                    <span class="log-details">${proto.name.toUpperCase()}</span>
+                                    <span class="log-protocol">${formatBytes(proto.bytes)}</span>
+                                `;
+                                logContainer.appendChild(entry);
+                            });
+                        }
+                        
+                        // Add conversations section
+                        if (device.conversations) {
+                            const convData = parseConversations(device.conversations, deviceIp);
+                            if (convData.conversations.length > 0) {
+                                const convHeader = document.createElement('div');
+                                convHeader.className = 'log-entry';
+                                convHeader.style.fontWeight = 'bold';
+                                convHeader.style.borderTop = '2px solid #334155';
+                                convHeader.style.marginTop = '8px';
+                                convHeader.style.paddingTop = '8px';
+                                convHeader.innerHTML = '<span style="color: #60a5fa;">Active Connections</span>';
+                                logContainer.appendChild(convHeader);
+                                
+                                convData.conversations.forEach(conv => {
+                                    const entry = document.createElement('div');
+                                    entry.className = 'log-entry';
+                                    const remote = conv.direction === 'outbound' ? conv.destination : conv.source;
+                                    const remoteIp = remote.split(':')[0];
+                                    const remotePort = remote.split(':')[1];
+                                    entry.innerHTML = `
+                                        <span class="log-time">${conv.type}</span>
+                                        <span class="log-details">${remoteIp}:${remotePort} (${conv.direction === 'outbound' ? 'outgoing' : 'incoming'})</span>
+                                        <span class="log-protocol">↑${formatBytes(conv.uploadBytes)} ↓${formatBytes(conv.downloadBytes)}</span>
+                                    `;
+                                    logContainer.appendChild(entry);
+                                });
+                            }
+                        }
+                        
+                        // Add HTTP requests if available
+                        if (device.http_requests && device.http_requests.length > 0) {
+                            const httpHeader = document.createElement('div');
+                            httpHeader.className = 'log-entry';
+                            httpHeader.style.fontWeight = 'bold';
+                            httpHeader.style.borderTop = '2px solid #334155';
+                            httpHeader.style.marginTop = '8px';
+                            httpHeader.style.paddingTop = '8px';
+                            httpHeader.innerHTML = '<span style="color: #60a5fa;">HTTP Requests</span>';
+                            logContainer.appendChild(httpHeader);
+                            
+                            device.http_requests.forEach(req => {
+                                const entry = document.createElement('div');
+                                entry.className = 'log-entry';
+                                entry.innerHTML = `
+                                    <span class="log-time">HTTP</span>
+                                    <span class="log-details">${req.method || 'GET'} ${req.host || ''}${req.path || ''}</span>
+                                `;
+                                logContainer.appendChild(entry);
+                            });
+                        }
+                        
+                        // Add TLS SNI if available
+                        if (device.tls_sni && device.tls_sni.length > 0) {
+                            const tlsHeader = document.createElement('div');
+                            tlsHeader.className = 'log-entry';
+                            tlsHeader.style.fontWeight = 'bold';
+                            tlsHeader.style.borderTop = '2px solid #334155';
+                            tlsHeader.style.marginTop = '8px';
+                            tlsHeader.style.paddingTop = '8px';
+                            tlsHeader.innerHTML = '<span style="color: #60a5fa;">TLS/SSL Connections</span>';
+                            logContainer.appendChild(tlsHeader);
+                            
+                            device.tls_sni.forEach(sni => {
+                                const entry = document.createElement('div');
+                                entry.className = 'log-entry';
+                                entry.innerHTML = `
+                                    <span class="log-time">TLS</span>
+                                    <span class="log-details">${sni.sni || 'Unknown'}</span>
+                                `;
+                                logContainer.appendChild(entry);
+                            });
+                        }
+                    }
                 }
             } catch (error) {
                 console.error('Error loading device info:', error);
@@ -450,32 +726,64 @@
                     return;
                 }
 
-                // Update speed section (small area)
-                const uploadFormatted = formatBps(data.upload_bps || 0);
-                const downloadFormatted = formatBps(data.download_bps || 0);
-                const uploadParts = uploadFormatted.split(' ');
-                const downloadParts = downloadFormatted.split(' ');
-                
-                document.getElementById('speed-upload').textContent = uploadParts[0];
-                document.getElementById('speed-upload-unit').textContent = uploadParts[1] || 'bps';
-                document.getElementById('speed-download').textContent = downloadParts[0];
-                document.getElementById('speed-download-unit').textContent = downloadParts[1] || 'bps';
+                // Update speed section (small area) - only if we have valid live data
+                // Don't overwrite historical data with zeros from initial capture
+                if (data.upload_bps > 0 || data.download_bps > 0 || data.packets > 0) {
+                    const uploadFormatted = formatBps(data.upload_bps || 0);
+                    const downloadFormatted = formatBps(data.download_bps || 0);
+                    const uploadParts = uploadFormatted.split(' ');
+                    const downloadParts = downloadFormatted.split(' ');
+                    
+                    document.getElementById('speed-upload').textContent = uploadParts[0];
+                    document.getElementById('speed-upload-unit').textContent = uploadParts[1] || 'bps';
+                    document.getElementById('speed-download').textContent = downloadParts[0];
+                    document.getElementById('speed-download-unit').textContent = downloadParts[1] || 'bps';
+                }
 
-                // Update scanning stats
-                document.getElementById('scan-packets').textContent = data.packets || 0;
-                document.getElementById('scan-bytes').textContent = formatBytes(data.bytes || 0);
+                // Update scanning stats - only if we have valid live data
+                // Preserve historical data if live capture hasn't collected anything yet
+                if (data.packets > 0 || data.bytes > 0) {
+                    document.getElementById('scan-packets').textContent = (data.packets || 0).toLocaleString();
+                    document.getElementById('scan-bytes').textContent = formatBytes(data.bytes || 0);
+                }
 
                 // Update traffic log (main scanning area)
+                // If we have live traffic, replace historical data with live stream
                 const logContainer = document.getElementById('traffic-log');
                 if (data.recent_packets && data.recent_packets.length > 0) {
+                    // Check if we're showing historical data (has protocol hierarchy header)
+                    const hasHistorical = logContainer.querySelector('span[style*="color: #60a5fa"]');
+                    
+                    // If this is the first live update, clear historical data
+                    if (hasHistorical && !logContainer.querySelector('.log-entry .log-time[style*="color"]')) {
+                        logContainer.innerHTML = '';
+                        const liveHeader = document.createElement('div');
+                        liveHeader.className = 'log-entry';
+                        liveHeader.style.fontWeight = 'bold';
+                        liveHeader.style.borderBottom = '2px solid #334155';
+                        liveHeader.innerHTML = '<span style="color: #4ade80;">Live Traffic Stream</span>';
+                        logContainer.appendChild(liveHeader);
+                    }
+                    
+                    // Remove empty state if present
                     if (logContainer.querySelector('.empty-traffic')) {
                         logContainer.innerHTML = '';
+                        const liveHeader = document.createElement('div');
+                        liveHeader.className = 'log-entry';
+                        liveHeader.style.fontWeight = 'bold';
+                        liveHeader.style.borderBottom = '2px solid #334155';
+                        liveHeader.innerHTML = '<span style="color: #4ade80;">Live Traffic Stream</span>';
+                        logContainer.appendChild(liveHeader);
                     }
                     
                     // Add new log entries (limit to last 100)
                     const existingEntries = logContainer.querySelectorAll('.log-entry').length;
                     if (existingEntries > 100) {
-                        logContainer.removeChild(logContainer.firstChild);
+                        // Remove oldest entry (but keep header)
+                        const entries = logContainer.querySelectorAll('.log-entry');
+                        if (entries.length > 1) {
+                            logContainer.removeChild(entries[1]); // Skip header
+                        }
                     }
                     
                     data.recent_packets.forEach(packet => {
@@ -541,9 +849,13 @@
         // Cleanup on page unload
         window.addEventListener('beforeunload', stopTrafficCapture);
 
-        // Initialize
+        // Initialize - load device info first, then start capture after a short delay
+        // This ensures historical data is displayed before live capture overwrites it
         loadDeviceInfo();
-        startTrafficCapture();
+        // Delay traffic capture start to let historical data display first
+        setTimeout(() => {
+            startTrafficCapture();
+        }, 500);
     </script>
 </body>
 </html>

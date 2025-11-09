@@ -1,4 +1,3 @@
 # ignoring sudo .pcap files
 
 *.pcap
-logs

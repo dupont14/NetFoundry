@@ -1,0 +1,90 @@
+
+[+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap") could not be opened: Permission denied.
+0 packets captured
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap") could not be opened: Permission denied.
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap") could not be opened: Permission denied.
+0 packets captured
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap") could not be opened: Permission denied.
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap") could not be opened: Permission denied.
+0 packets captured
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap") could not be opened: Permission denied.
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap") could not be opened: Permission denied.
+0 packets captured
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'wlan0'
+tshark: The file to which the capture would be saved ("/home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap") could not be opened: Permission denied.
+0 packets captured
+
+============================================================
+Analyzing device: 192.168.0.1 (192.168.0.1)
+============================================================
+[+] Capturing traffic for 192.168.0.1 for 10s...
+[✗] Error analyzing 192.168.0.1: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.1' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_1.pcap' returned non-zero exit status 1.
+
+============================================================
+Analyzing device: Micro-St (192.168.0.100)
+============================================================
+[+] Capturing traffic for 192.168.0.100 for 10s...
+[✗] Error analyzing 192.168.0.100: Command 'sudo tshark -i wlan0 -f 'host 192.168.0.100' -a duration:10 -w /home/lucian/Netfoundry/working_folder/output/capture_192_168_0_100.pcap' returned non-zero exit status 1.
+
+[+] All summaries saved to /home/lucian/Netfoundry/working_folder/output/all_summaries.json

@@ -98,7 +98,8 @@
         }
       }
     ],
-    "display_name": "192.168.0.1"
+    "display_name": "192.168.0.1",
+    "online": true
   },
   {
     "ip": "192.168.0.100",
@@ -199,6 +200,445 @@
         }
       }
     ],
-    "display_name": "Micro-St"
+    "display_name": "Micro-St",
+    "online": false
+  },
+  {
+    "ip": "192.168.0.103",
+    "mac": "c4:23:60:8d:9c:9e",
+    "vendor_hint": "Intel Corporate",
+    "locally_admin": false,
+    "vendor_local": "IntelCor",
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "filtered",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "IntelCor",
+    "online": false
+  },
+  {
+    "ip": "192.168.0.104",
+    "mac": "e6:eb:7e:7c:26:03",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [
+      {
+        "port": 22,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "ssh",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 80,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "http",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 135,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "msrpc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 139,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "netbios-ssn",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 445,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "microsoft-ds",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 1309,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "jtag-server",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 3580,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "nati-svrloc",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      },
+      {
+        "port": 4000,
+        "proto": "tcp",
+        "state": "closed",
+        "service": {
+          "name": "remoteanything",
+          "product": null,
+          "version": null,
+          "extrainfo": null
+        }
+      }
+    ],
+    "display_name": "192.168.0.104",
+    "online": false
+  },
+  {
+    "ip": "192.168.0.102",
+    "mac": "46:f4:d7:04:8d:84",
+    "vendor_hint": "(Unknown: locally administered)",
+    "locally_admin": true,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "192.168.0.102",
+    "online": false
+  },
+  {
+    "ip": "192.168.0.255",
+    "mac": "ff:ff:ff:ff:ff:ff",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "192.168.0.255",
+    "online": false
+  },
+  {
+    "ip": "172.30.130.8",
+    "mac": "1e:94:16:36:f2:21",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.130.8",
+    "online": false
+  },
+  {
+    "ip": "172.30.191.81",
+    "mac": "f6:20:d8:57:cd:69",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.191.81",
+    "online": false
+  },
+  {
+    "ip": "172.30.131.199",
+    "mac": "62:7c:e9:38:8d:7b",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.131.199",
+    "online": false
+  },
+  {
+    "ip": "172.30.147.95",
+    "mac": "8a:be:35:e9:7c:cf",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.147.95",
+    "online": false
+  },
+  {
+    "ip": "172.30.191.240",
+    "mac": "d8:e7:43:65:bd:e4",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.191.240",
+    "online": false
+  },
+  {
+    "ip": "172.30.255.255",
+    "mac": "ff:ff:ff:ff:ff:ff",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.255.255",
+    "online": false
+  },
+  {
+    "ip": "172.30.191.248",
+    "mac": "2e:8b:b8:63:19:25",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.191.248",
+    "online": false
+  },
+  {
+    "ip": "172.30.191.251",
+    "mac": "38:1b:9e:e8:a8:24",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.191.251",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.6",
+    "mac": "dc:68:eb:60:9b:91",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.6",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.15",
+    "mac": "44:38:e8:de:b4:12",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.15",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.34",
+    "mac": "8a:81:5a:80:a8:de",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.34",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.70",
+    "mac": "a8:4a:63:5f:cf:db",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.70",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.87",
+    "mac": "8a:cd:e1:a3:1d:cf",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.87",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.88",
+    "mac": "c8:a6:ef:3c:44:9a",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.88",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.92",
+    "mac": "14:c6:7d:14:a1:22",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.92",
+    "online": false
+  },
+  {
+    "ip": "172.30.192.94",
+    "mac": "bc:45:5b:72:f8:d2",
+    "vendor_hint": "",
+    "locally_admin": false,
+    "vendor_local": null,
+    "vendor_api": null,
+    "hostname": null,
+    "os_guess": null,
+    "ports": [],
+    "display_name": "172.30.192.94",
+    "online": false
   }
 ]

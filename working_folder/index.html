@@ -327,16 +327,67 @@
             return device.ports.filter(p => p.state === 'open').map(p => p.port);
         }
 
+        function isValidDevice(device, routerIP = null) {
+            if (!device || !device.ip) return false;
+            
+            // Filter out broadcast addresses and invalid IPs
+            const ip = device.ip;
+            const parts = ip.split('.');
+            
+            // Must be valid IPv4 format
+            if (parts.length !== 4) return false;
+            
+            // Filter out broadcast addresses (.255) and network addresses (.0)
+            const lastOctet = parseInt(parts[3]);
+            if (lastOctet === 255 || lastOctet === 0) return false;
+            
+            // Filter out multicast addresses (224.0.0.0 - 239.255.255.255)
+            const firstOctet = parseInt(parts[0]);
+            if (firstOctet >= 224 && firstOctet <= 239) return false;
+            
+            // If router IP is provided, only show devices on the same subnet (first 3 octets)
+            if (routerIP) {
+                const routerParts = routerIP.split('.');
+                if (routerParts.length === 4) {
+                    if (parts[0] !== routerParts[0] || 
+                        parts[1] !== routerParts[1] || 
+                        parts[2] !== routerParts[2]) {
+                        return false; // Different subnet
+                    }
+                }
+            }
+            
+            return true;
+        }
+
         function buildTreeFromArray(deviceList) {
-            // Find router (usually .1 or first device)
+            // Filter out invalid devices and duplicates
+            const validDevices = [];
+            const seenIPs = new Set();
+            
+            // First pass: find router
             const router = deviceList.find(d => getDeviceType(d) === 'router') || deviceList[0];
-            if (!router) return null;
+            const routerIP = router ? router.ip : null;
+            
+            // Second pass: filter devices (same subnet as router, no duplicates, valid IPs)
+            for (const device of deviceList) {
+                if (isValidDevice(device, routerIP) && !seenIPs.has(device.ip)) {
+                    seenIPs.add(device.ip);
+                    validDevices.push(device);
+                }
+            }
+            
+            if (validDevices.length === 0) return null;
+            
+            // Find router in filtered list
+            const filteredRouter = validDevices.find(d => getDeviceType(d) === 'router') || validDevices[0];
+            if (!filteredRouter) return null;
             
             // Get all other devices as children
-            const children = deviceList.filter(d => d.ip !== router.ip);
+            const children = validDevices.filter(d => d.ip !== filteredRouter.ip);
             
             return {
-                ...router,
+                ...filteredRouter,
                 children: children
             };
         }
@@ -349,14 +400,33 @@
             btn.classList.add('loading');
 
             try {
-                const response = await fetch('/network-devices.json');
+                // Fetch devices with traffic data merged from all_summaries.json
+                const response = await fetch('/api/devices');
                 const data = await response.json();
                 
                 // Handle both array and tree formats
                 if (Array.isArray(data)) {
                     deviceTree = buildTreeFromArray(data);
                 } else if (data && typeof data === 'object') {
-                    deviceTree = data;
+                    // If it's a tree, filter children recursively
+                    const routerIP = data.ip || null;
+                    function filterTree(node) {
+                        if (!node || !isValidDevice(node, routerIP)) return null;
+                        
+                        const filtered = { ...node };
+                        if (node.children && Array.isArray(node.children)) {
+                            const seenIPs = new Set([node.ip]);
+                            filtered.children = node.children
+                                .filter(child => isValidDevice(child, routerIP) && !seenIPs.has(child.ip))
+                                .map(child => {
+                                    seenIPs.add(child.ip);
+                                    return filterTree(child);
+                                })
+                                .filter(child => child !== null);
+                        }
+                        return filtered;
+                    }
+                    deviceTree = filterTree(data);
                 } else {
                     deviceTree = null;
                 }
@@ -480,6 +550,35 @@
                                     <div class="tooltip-value" style="font-size: 11px; line-height: 1.4;">${device.os_guess}</div>
                                 </div>
                             ` : ''}
+                            ${(device.packets !== undefined || device.bytes !== undefined || device.upload_bps !== undefined || device.download_bps !== undefined) ? `
+                                <div class="tooltip-section">
+                                    <div class="tooltip-label" style="margin-bottom: 4px;">Traffic Stats:</div>
+                                    ${device.packets !== undefined ? `
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Packets:</span>
+                                            <span class="tooltip-value">${device.packets.toLocaleString()}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${device.bytes !== undefined ? `
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Bytes:</span>
+                                            <span class="tooltip-value">${formatBytes(device.bytes)}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${device.upload_bps !== undefined ? `
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Upload:</span>
+                                            <span class="tooltip-value">${formatBps(device.upload_bps)}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${device.download_bps !== undefined ? `
+                                        <div class="tooltip-row">
+                                            <span class="tooltip-label">Download:</span>
+                                            <span class="tooltip-value">${formatBps(device.download_bps)}</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
                             ${openPorts.length > 0 ? `
                                 <div class="tooltip-section">
                                     <div class="tooltip-label" style="margin-bottom: 4px;">Open Ports:</div>
@@ -519,11 +618,26 @@
             renderDeviceNode(deviceTree);
         }
 
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        }
+
+        function formatBps(bps) {
+            if (bps === 0) return '0 bps';
+            const k = 1000;
+            const sizes = ['bps', 'Kbps', 'Mbps', 'Gbps'];
+            const i = Math.floor(Math.log(bps) / Math.log(k));
+            return (bps / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        }
+
         document.getElementById('refresh-btn').addEventListener('click', loadDevices);
 
-        // Initial load and auto-refresh every 5 seconds
+        // Initial load only - no auto-refresh
         loadDevices();
-        setInterval(loadDevices, 5000);
     </script>
 </body>
 </html>

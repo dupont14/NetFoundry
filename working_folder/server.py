@@ -22,6 +22,8 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
             self.handle_get_device()
         elif path == '/api/traffic/data':
             self.handle_get_traffic_data()
+        elif path == '/api/devices':
+            self.handle_get_devices_with_traffic()
         # Static files
         elif path == '/' or path == '/index.html':
             self.serve_file('index.html')
@@ -44,6 +46,34 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.end_headers()
+    
+    def load_traffic_summaries(self):
+        """Load all traffic summaries from traffic_data folder"""
+        summaries = {}
+        traffic_dir = Path('traffic_data')
+        
+        # Try to load all_summaries.json first (faster)
+        all_summaries_file = traffic_dir / 'all_summaries.json'
+        if all_summaries_file.exists():
+            try:
+                with open(all_summaries_file, 'r') as f:
+                    summaries = json.load(f)
+                return summaries
+            except Exception as e:
+                print(f"Error loading all_summaries.json: {e}")
+        
+        # Fallback: load individual summary files
+        if traffic_dir.exists():
+            for summary_file in traffic_dir.glob('summary_*.json'):
+                try:
+                    with open(summary_file, 'r') as f:
+                        summary = json.load(f)
+                        if 'ip' in summary:
+                            summaries[summary['ip']] = summary
+                except Exception as e:
+                    print(f"Error loading {summary_file}: {e}")
+        
+        return summaries
     
     def handle_get_device(self):
         """Get device information by IP"""
@@ -83,13 +113,139 @@ class NetworkRequestHandler(BaseHTTPRequestHandler):
             device = None
             for d in device_list:
                 if d.get('ip') == ip:
-                    device = d
+                    device = d.copy()  # Make a copy to avoid modifying original
                     break
             
-            if device:
-                self.send_json_response(device)
-            else:
+            if not device:
                 self.send_json_response({'error': 'Device not found'}, 404)
+                return
+            
+            # Load and merge traffic summary data
+            traffic_summaries = self.load_traffic_summaries()
+            device = self.merge_traffic_data(device, traffic_summaries)
+            
+            # Add additional traffic analysis data if available
+            if ip in traffic_summaries:
+                summary = traffic_summaries[ip]
+                
+                # Add protocol information
+                if 'protocols' in summary:
+                    device['protocols'] = summary['protocols']
+                
+                # Add conversations
+                if 'conversations' in summary:
+                    device['conversations'] = summary['conversations']
+                
+                # Add HTTP requests
+                if 'http_requests' in summary and summary['http_requests']:
+                    device['http_requests'] = summary['http_requests']
+                
+                # Add TLS SNI
+                if 'tls_sni' in summary and summary['tls_sni']:
+                    device['tls_sni'] = summary['tls_sni']
+            else:
+                # Ensure traffic stats are set even if not in summaries (set to 0)
+                if 'packets' not in device:
+                    device['packets'] = 0
+                if 'bytes' not in device:
+                    device['bytes'] = 0
+                if 'upload_bps' not in device:
+                    device['upload_bps'] = 0
+                if 'download_bps' not in device:
+                    device['download_bps'] = 0
+                if 'traffic_stats' not in device:
+                    device['traffic_stats'] = {
+                        'packets': 0,
+                        'bytes': 0,
+                        'upload_bps': 0,
+                        'download_bps': 0
+                    }
+            
+            self.send_json_response(device)
+        except Exception as e:
+            self.send_json_response({'error': str(e)}, 500)
+    
+    def merge_traffic_data(self, device, traffic_summaries):
+        """Merge traffic summary data into a device object"""
+        ip = device.get('ip')
+        if ip and ip in traffic_summaries:
+            summary = traffic_summaries[ip]
+            
+            # Merge device metadata from traffic summary (more detailed)
+            if '_device_metadata' in summary:
+                metadata = summary['_device_metadata']
+                # Merge metadata, preferring traffic summary data
+                for key, value in metadata.items():
+                    if value is not None and value != '':
+                        device[key] = value
+            
+            # Add ALL traffic statistics directly to device
+            device['packets'] = summary.get('packets', 0)
+            device['bytes'] = summary.get('bytes', 0)
+            device['upload_bps'] = summary.get('upload_bps', 0)
+            device['download_bps'] = summary.get('download_bps', 0)
+            
+            # Also keep in traffic_stats for backward compatibility
+            device['traffic_stats'] = {
+                'packets': summary.get('packets', 0),
+                'bytes': summary.get('bytes', 0),
+                'upload_bps': summary.get('upload_bps', 0),
+                'download_bps': summary.get('download_bps', 0),
+                'analyzed_at': summary.get('analyzed_at')
+            }
+        else:
+            # Set default values if device not in summaries
+            if 'packets' not in device:
+                device['packets'] = 0
+            if 'bytes' not in device:
+                device['bytes'] = 0
+            if 'upload_bps' not in device:
+                device['upload_bps'] = 0
+            if 'download_bps' not in device:
+                device['download_bps'] = 0
+            if 'traffic_stats' not in device:
+                device['traffic_stats'] = {
+                    'packets': 0,
+                    'bytes': 0,
+                    'upload_bps': 0,
+                    'download_bps': 0
+                }
+        
+        return device
+    
+    def handle_get_devices_with_traffic(self):
+        """Get all devices with traffic data merged from all_summaries.json"""
+        devices_file = 'network-devices.json'
+        if not os.path.exists(devices_file):
+            self.send_json_response({'error': 'Devices file not found'}, 404)
+            return
+        
+        try:
+            with open(devices_file, 'r') as f:
+                data = json.load(f)
+            
+            # Load traffic summaries
+            traffic_summaries = self.load_traffic_summaries()
+            
+            # Recursively merge traffic data into device tree
+            def merge_tree(node):
+                if isinstance(node, dict):
+                    # Merge traffic data for this device
+                    node = self.merge_traffic_data(node.copy(), traffic_summaries)
+                    
+                    # Recursively process children
+                    if 'children' in node and isinstance(node['children'], list):
+                        node['children'] = [merge_tree(child) for child in node['children']]
+                
+                return node
+            
+            # Handle both array and tree formats
+            if isinstance(data, list):
+                result = [merge_tree(device) for device in data]
+            else:
+                result = merge_tree(data)
+            
+            self.send_json_response(result)
         except Exception as e:
             self.send_json_response({'error': str(e)}, 500)
     
