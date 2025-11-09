@@ -282,6 +282,18 @@
             return device.ports.filter(p => p.state === 'open').map(p => p.port);
         }
 
+        function flattenTree(tree, result = []) {
+            if (Array.isArray(tree)) {
+                tree.forEach(item => flattenTree(item, result));
+            } else if (tree && typeof tree === 'object') {
+                result.push(tree);
+                if (tree.children && Array.isArray(tree.children)) {
+                    tree.children.forEach(child => flattenTree(child, result));
+                }
+            }
+            return result;
+        }
+
         async function loadDevices() {
             const btn = document.getElementById('refresh-btn');
             btn.disabled = true;
@@ -290,7 +302,9 @@
             try {
                 const response = await fetch('/network-devices.json');
                 const data = await response.json();
-                devices = data.sort((a, b) => {
+                // Handle both array and tree formats
+                const deviceList = Array.isArray(data) ? data : flattenTree(data);
+                devices = deviceList.sort((a, b) => {
                     const aIsRouter = getDeviceType(a) === 'router';
                     const bIsRouter = getDeviceType(b) === 'router';
                     if (aIsRouter && !bIsRouter) return -1;
@@ -400,6 +414,10 @@
                 icon.addEventListener('mouseleave', () => {
                     tooltip.classList.remove('visible');
                     if (line) line.classList.replace('active', 'inactive');
+                });
+
+                icon.addEventListener('click', () => {
+                    window.location.href = `/device.html?ip=${encodeURIComponent(device.ip)}`;
                 });
 
                 container.appendChild(node);

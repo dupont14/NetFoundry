@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Details</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a);
+            min-height: 100vh;
+            padding: 24px;
+            color: white;
+        }
+        .container { max-width: 1280px; margin: 0 auto; }
+        .header {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .back-btn:hover { background: #475569; }
+        .device-info {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #334155;
+        }
+        .device-info h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #60a5fa;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .info-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+        .info-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+        .info-value {
+            font-size: 14px;
+            color: #e2e8f0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        .ports-section {
+            margin-top: 24px;
+        }
+        .ports-section h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #60a5fa;
+        }
+        .ports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .port-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+        .port-item.open {
+            border-color: #4ade80;
+        }
+        .port-item.filtered {
+            border-color: #fbbf24;
+        }
+        .traffic-section {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #334155;
+        }
+        .traffic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .traffic-header h2 {
+            font-size: 24px;
+            color: #60a5fa;
+        }
+        .traffic-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+        .status-indicator.active {
+            background: #4ade80;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .traffic-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+        .stat-unit {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-left: 4px;
+        }
+        .traffic-log {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 16px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .log-entry {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        .log-time {
+            color: #64748b;
+            margin-right: 8px;
+        }
+        .log-upload {
+            color: #60a5fa;
+        }
+        .log-download {
+            color: #4ade80;
+        }
+        .empty-traffic {
+            text-align: center;
+            padding: 48px;
+            color: #64748b;
+        }
+        svg { width: 16px; height: 16px; fill: currentColor; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Network Map
+            </a>
+            <div class="traffic-status">
+                <div class="status-indicator" id="status-indicator"></div>
+                <span id="status-text">Starting capture...</span>
+            </div>
+        </div>
+
+        <div class="device-info" id="device-info">
+            <h2>Loading device information...</h2>
+        </div>
+
+        <div class="traffic-section">
+            <div class="traffic-header">
+                <h2>Network Traffic</h2>
+            </div>
+            <div class="traffic-stats" id="traffic-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Packets</div>
+                    <div class="stat-value"><span id="stat-packets">0</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Bytes</div>
+                    <div class="stat-value"><span id="stat-bytes">0</span><span class="stat-unit">B</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Upload Speed</div>
+                    <div class="stat-value"><span id="stat-upload">0</span><span class="stat-unit">bps</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Download Speed</div>
+                    <div class="stat-value"><span id="stat-download">0</span><span class="stat-unit">bps</span></div>
+                </div>
+            </div>
+            <div class="traffic-log" id="traffic-log">
+                <div class="empty-traffic">Waiting for traffic data...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const deviceIp = urlParams.get('ip');
+        
+        if (!deviceIp) {
+            alert('No device IP specified');
+            window.location.href = '/';
+        }
+
+        let trafficInterval = null;
+        let isCapturing = false;
+
+        async function loadDeviceInfo() {
+            try {
+                const response = await fetch('/api/device?ip=' + encodeURIComponent(deviceIp));
+                const device = await response.json();
+                
+                if (!device || device.error) {
+                    document.getElementById('device-info').innerHTML = `
+                        <h2>Device Not Found</h2>
+                        <p>Could not find device with IP: ${deviceIp}</p>
+                    `;
+                    return;
+                }
+
+                const openPorts = device.ports ? device.ports.filter(p => p.state === 'open') : [];
+                const filteredPorts = device.ports ? device.ports.filter(p => p.state === 'filtered') : [];
+
+                document.getElementById('device-info').innerHTML = `
+                    <h2>${device.display_name || deviceIp}</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">IP Address</div>
+                            <div class="info-value">${device.ip}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">MAC Address</div>
+                            <div class="info-value">${device.mac || 'N/A'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Vendor</div>
+                            <div class="info-value">${device.vendor_local || device.vendor_hint || 'Unknown'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">OS Guess</div>
+                            <div class="info-value">${device.os_guess || 'Unknown'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Hostname</div>
+                            <div class="info-value">${device.hostname || 'N/A'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Locally Administered</div>
+                            <div class="info-value">${device.locally_admin ? 'Yes' : 'No'}</div>
+                        </div>
+                    </div>
+                    ${device.ports && device.ports.length > 0 ? `
+                        <div class="ports-section">
+                            <h3>Ports (${openPorts.length} open, ${filteredPorts.length} filtered)</h3>
+                            <div class="ports-grid">
+                                ${device.ports.map(port => `
+                                    <div class="port-item ${port.state}">
+                                        <div class="info-label">Port ${port.port}/${port.proto}</div>
+                                        <div class="info-value">${port.state}</div>
+                                        ${port.service && port.service.name ? `
+                                            <div class="info-label" style="margin-top: 4px;">Service: ${port.service.name}</div>
+                                        ` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+            } catch (error) {
+                console.error('Error loading device info:', error);
+                document.getElementById('device-info').innerHTML = `
+                    <h2>Error</h2>
+                    <p>Failed to load device information: ${error.message}</p>
+                `;
+            }
+        }
+
+        async function startTrafficCapture() {
+            if (isCapturing) return;
+            
+            try {
+                const response = await fetch('/api/traffic/start', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ip: deviceIp })
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    isCapturing = true;
+                    document.getElementById('status-indicator').classList.add('active');
+                    document.getElementById('status-text').textContent = 'Capturing traffic...';
+                    
+                    // Start polling for traffic updates
+                    trafficInterval = setInterval(updateTraffic, 2000); // Update every 2 seconds
+                    updateTraffic(); // Initial update
+                } else {
+                    document.getElementById('status-text').textContent = 'Failed to start capture: ' + (result.error || 'Unknown error');
+                }
+            } catch (error) {
+                console.error('Error starting traffic capture:', error);
+                document.getElementById('status-text').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        async function updateTraffic() {
+            try {
+                const response = await fetch('/api/traffic/data?ip=' + encodeURIComponent(deviceIp));
+                const data = await response.json();
+                
+                if (data.error) {
+                    document.getElementById('status-text').textContent = 'Error: ' + data.error;
+                    return;
+                }
+
+                // Update stats
+                document.getElementById('stat-packets').textContent = data.packets || 0;
+                document.getElementById('stat-bytes').textContent = formatBytes(data.bytes || 0);
+                document.getElementById('stat-upload').textContent = formatBps(data.upload_bps || 0);
+                document.getElementById('stat-download').textContent = formatBps(data.download_bps || 0);
+
+                // Update log
+                const logContainer = document.getElementById('traffic-log');
+                if (data.recent_packets && data.recent_packets.length > 0) {
+                    if (logContainer.querySelector('.empty-traffic')) {
+                        logContainer.innerHTML = '';
+                    }
+                    
+                    // Add new log entries (limit to last 50)
+                    const existingEntries = logContainer.querySelectorAll('.log-entry').length;
+                    if (existingEntries > 50) {
+                        logContainer.removeChild(logContainer.firstChild);
+                    }
+                    
+                    data.recent_packets.forEach(packet => {
+                        const entry = document.createElement('div');
+                        entry.className = 'log-entry';
+                        const time = new Date(packet.timestamp * 1000).toLocaleTimeString();
+                        const direction = packet.direction === 'upload' ? 'upload' : 'download';
+                        const color = direction === 'upload' ? 'log-upload' : 'log-download';
+                        entry.innerHTML = `
+                            <span class="log-time">${time}</span>
+                            <span class="${color}">${direction.toUpperCase()}</span>
+                            ${packet.size} bytes (${packet.protocol || 'unknown'})
+                        `;
+                        logContainer.appendChild(entry);
+                    });
+                    
+                    // Auto-scroll to bottom
+                    logContainer.scrollTop = logContainer.scrollHeight;
+                }
+            } catch (error) {
+                console.error('Error updating traffic:', error);
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        }
+
+        function formatBps(bps) {
+            if (bps === 0) return '0';
+            const k = 1000;
+            const sizes = ['bps', 'Kbps', 'Mbps', 'Gbps'];
+            const i = Math.floor(Math.log(bps) / Math.log(k));
+            return (bps / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        }
+
+        async function stopTrafficCapture() {
+            if (trafficInterval) {
+                clearInterval(trafficInterval);
+                trafficInterval = null;
+            }
+            
+            try {
+                await fetch('/api/traffic/stop', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ip: deviceIp })
+                });
+            } catch (error) {
+                console.error('Error stopping traffic capture:', error);
+            }
+            
+            isCapturing = false;
+            document.getElementById('status-indicator').classList.remove('active');
+            document.getElementById('status-text').textContent = 'Capture stopped';
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', stopTrafficCapture);
+
+        // Initialize
+        loadDeviceInfo();
+        startTrafficCapture();
+    </script>
+</body>
+</html>
+
